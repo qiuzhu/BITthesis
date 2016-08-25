@@ -1,12 +1,11 @@
 %%
-%% This is file `bitthesis.cls',
-%% generated with the docstrip utility.
+%% This is file `BITthesis.cls',
 %%
 %% The original source files were:
 %%
 %% bitthesis.dtx  (with options: `class')
 %% 
-%% Copyright (C) 2016 by japinli <japinli@hotmail.com>
+%% Copyright (C) 2016 by wangwei<362235823@qq.com>
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either
