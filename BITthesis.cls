@@ -157,8 +157,8 @@
 \fancypagestyle{bit@headings}{%
   \fancyhf{}
   \fancyfoot[C]{\songti\zihao{5} ~{\thepage}~}
-  \fancyhead[]{\ifbit@opt@master\zihao{5}\songti\bit@zh@thesis@name
-                \else\zihao{5}\songti\bit@zh@thesis@name\fi}
+  \fancyhead[C]{\ifbit@opt@master\zihao{5}\songti\bit@header@title
+                \else\zihao{5}\songti\bit@header@title\fi}
   \renewcommand{\headrulewidth}{0.4pt}
   \renewcommand{\footrulewidth}{0pt}}
 
@@ -174,19 +174,19 @@
  \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmatterfalse
   \pagenumbering{Roman}
-  \thispagestyle{bit@headings}
+  \pagestyle{bit@headings}
 }
 %=======================修改mainmatter 的页码为阿拉伯格式，并调整页面风格========================
 \renewcommand{\mainmatter}{
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmattertrue
   \pagenumbering{arabic}
-  \thispagestyle{bit@headings}
+  \pagestyle{bit@headings}
 }
 %=================修改backmatter===============================================================
 \renewcommand\backmatter{%
   \@mainmattertrue
-   \thispagestyle{bit@headings}
+   \pagestyle{bit@headings}
    }
    
 %%===============================设置带圆圈的标准=============================================
@@ -385,7 +385,7 @@
   }{}
   \newenvironment{enabstract}{
     \chapter[Abstract]{Abstract}
-    \fontsize{12bp}{20bp}
+    \fontsize{12bp}{20bp}\selectfont
   }{}
 
 \newcommand{\zhkeywords}[2][\zihao{5}]{
