@@ -1,3 +1,4 @@
+%!TeX program = xelatex
 \documentclass[oneside,doctor]{BITthesis}
 
 \zhtitle{\LaTeX{}论文模板}
@@ -17,6 +18,9 @@
 \udc{L1606}
 \secret{公开}
 
+\providecommand{\cs}{\relax}
+\renewcommand{\cs}[1]{\textbackslash#1}
+
 \begin{document}
 \makecover
 
@@ -25,7 +29,7 @@
 \input{chapters/abstract}
 
 \tableofcontents
-	
+
 \mainmatter
 
 \input{chapters/intro}
