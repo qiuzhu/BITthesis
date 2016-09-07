@@ -5,19 +5,19 @@
 %% The original source files were:
 %%
 %% bitthesis.dtx  (with options: `class')
-%% 
+%%
 %% Copyright (C) 2016 by japinli <japinli@hotmail.com>
-%% 
+%%
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either
 %% version 1.3 of this license or (at your option) any later
 %% version. The latest version of this license is in:
-%% 
+%%
 %%    http://www.latex-project.org/lppl.txt
-%% 
+%%
 %% and version 1.3 or later is part of all distributions of
 %% LaTeX version 2005/12/01 or later.
-%% 
+%%
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \ProvidesClass{BITthesis}
     [2016/08/21 v0.0.2 bit Thesis Template]
@@ -44,18 +44,6 @@
   \ifbit@opt@doctor\relax\else
     \bit@opt@mastertrue
   \fi
-%%=========================================加载常用宏=========================================
-\RequirePackage{ifxetex}
-%\RequirePackage{xparse}
-%\RequirePackage{amsmath}
-\RequirePackage{tgcursor}
-\RequirePackage{graphicx}
-\RequirePackage{pdfpages}
-\RequirePackage[shortlabels]{enumitem}
-%\RequirePackage{CJKfntef}
-\RequirePackage{array}
-
-%\RequirePackage[numbers,super,compress]{natbib}
 %================================
 
 %\ifbit@opt@pdf
@@ -71,6 +59,18 @@
 \fi
 %%========================载入ctexbook 文档类，并设置纸张大小、编码格式及字号===================
 \LoadClass[a4paper, cs4size, UTF8]{ctexbook}
+%%=========================================加载常用宏=========================================
+\RequirePackage{ifxetex}
+%\RequirePackage{xparse}
+%\RequirePackage{amsmath}
+\RequirePackage{tgcursor}
+\RequirePackage{graphicx}
+\RequirePackage{pdfpages}
+\RequirePackage[shortlabels]{enumitem}
+%\RequirePackage{CJKfntef}
+\RequirePackage{array}
+
+%\RequirePackage[numbers,super,compress]{natbib}
 %%============================设置西文字体，中文字体由ctex 自动设置=============================
 %\setmainfont{Times New Roman}
 %\setsansfont{Arial}
@@ -188,7 +188,7 @@
   \@mainmattertrue
    \pagestyle{bit@headings}
    }
-   
+
 %%===============================设置带圆圈的标准=============================================
 \usepackage{tikz}
 \usepackage{etoolbox}
@@ -312,7 +312,7 @@
 %%=====================重定义\maketitle，调用\bit@maketile 生成扉页===================
 
 \newcommand{\makecover}{%
- 
+
   \pdfbookmark[0]{封面}{titlepage}
   \bit@zh@titlepage
   \bit@en@titlepage
@@ -431,7 +431,7 @@
 \newenvironment{summary}
 { \setcounter{secnumdepth}{-2}
 	\chapter{总结}
-	
+
 }{}
 \newenvironment{ack}{
   \chapter{致谢}
