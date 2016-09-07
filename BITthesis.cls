@@ -111,7 +111,7 @@
 \bit@define@term{zhadvisor}                % 指导教师中文姓名
 \bit@define@term{enadvisor}                % 指导教师英文姓名
 \bit@define@term{zhchairman}               %中文答辩委员会主席
-\bit@define@term{enadvisor}                %英文答辩主席
+\bit@define@term{enchairman}                %英文答辩主席
 \bit@define@term{zhacademy}                % 学院中文名
 \bit@define@term{enacademy}                % 学院英文名
 \bit@define@term{zhmajor}                  % 专业中文名
