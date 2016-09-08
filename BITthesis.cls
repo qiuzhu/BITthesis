@@ -72,7 +72,7 @@
 
 %\RequirePackage[numbers,super,compress]{natbib}
 %%============================设置西文字体，中文字体由ctex 自动设置=============================
-%\setmainfont{Times New Roman}
+\setmainfont{Times New Roman}
 %\setsansfont{Arial}
 %\setmonofont{Courier New}
 %\newCJKfontfamily{\hwxk}{STXingkai}
@@ -92,9 +92,9 @@
 %%=====================生成整数倍汉字宽度的空格，默认为1================================
 \newcommand{\zhspace}[1][1]{\hspace{#1\ccwd}}
 %%======================生成空的下划线，内部使用======================================
-\newcommand{\bit@underline}[2][6em]{
-  \hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt\relax
-}
+\def\bit@underline[#1]#2{%
+	\CTEXunderline{\hbox to #1{\hfill#2\hfill}}}
+\def\bitunderline{\@ifnextchar[\bit@underline\CTEXunderline}
 %%=====================声明“作者姓名”等项目的命令======================================
 \def\bit@define@term#1{
   \expandafter\gdef\csname #1\endcsname##1{
@@ -125,7 +125,7 @@
 \bit@define@term{udc}                      % UDC编号
 \bit@define@term{secret}                   % 密级
 %%==============引用geometry 宏包设置纸张和页面========================
-\RequirePackage[top=35mm,headsep=10mm,footskip=7mm,bottom=25mm,left=27mm,right=27mm,paper=a4paper]{geometry} %设置版面:上3.5cm，下2.5cm，左2.7cm，右2.7cm，页眉2.5cm，页脚1.8cm，装订线0cm
+\RequirePackage[top=35mm,headheight=10mm,footskip=7mm,bottom=25mm,left=27mm,right=27mm,paper=a4paper]{geometry} %设置版面:上3.5cm，下2.5cm，左2.7cm，右2.7cm，页眉2.5cm，页脚1.8cm，装订线0cm
 %% ====================定义几个常用的数学常量符号=====================================
 \newcommand{\me}{\mathrm{e}} %定义 对数常数e，虚数符号i,j以及微分算子d为直立体。
 \newcommand{\mi}{\mathrm{i}}
@@ -204,11 +204,13 @@
   chapter/number={\arabic{chapter}},
   chapter/format={\bfseries\centering\zihao{3}\heiti},
   %aftername={\quad{}} %章序号与章名间空一个汉字符
-  chapter/beforeskip={8pt},
+  chapter/pagestyle ={bit@headings},
+  chapter/beforeskip={10pt},
   chapter/afterskip={12pt},
   }
   \ctexset{section={
 	format={\raggedright\bfseries\heiti\zihao{4}},
+	
 %	beforeskip=12bp,
 	%afterskip=12bp,
 	}
@@ -246,32 +248,15 @@
 \renewcommand{\contentsname}{目录}
 \RequirePackage{titletoc}
 %定义目录相关设置
-\newcommand{\bit@toc@leaders}{\titlerule*[.5pc]{$\cdot$}}
-\newcommand{\bit@chap@font}{\songti}
-\newcommand{\bit@chap@size}{\zihao{4}}
-\newcommand{\bit@sect@font}{\songti}
-\newcommand{\bit@sect@size}{\zihao{-4}}
-\newcommand{\bit@subs@font}{\songti}
-\newcommand{\bit@subs@size}{\zihao{-4}}
-\newcommand{\bit@chap@toc@indent}{0bp}
-\newcommand{\bit@sect@toc@indent}{2\ccwd}
-\newcommand{\bit@subs@toc@indent}{4\ccwd}
-%============设置目录格式====================
-\titlecontents{chapter}
-              [\bit@chap@toc@indent]
-              {\bit@chap@size\bit@chap@font}
-              {\thecontentslabel\hspace*{.5em}}
-              {}{\bit@toc@leaders\contentspage}
-\titlecontents{section}
-              [\bit@sect@toc@indent]
-              {\bit@sect@size\bit@sect@font}
-              {\thecontentslabel\hspace*{.5em}}
-              {}{\bit@toc@leaders\contentspage}
-\titlecontents{subsection}
-              [\bit@subs@toc@indent]
-              {\bit@subs@size\bit@subs@font}
-              {\thecontentslabel\hspace*{.5em}}
-              {}{\bit@toc@leaders\contentspage}
+\titlecontents{chapter}[0pt]{\vspace{0.25\baselineskip} \songti \zihao{4}}
+{\thecontentslabel\quad}{}
+{\hspace{.5em}\titlerule*{.}\contentspage}
+\titlecontents{section}[2em]{\songti \zihao{-4}}
+{\thecontentslabel\quad}{}
+{\hspace{.5em}\titlerule*{.}\contentspage}
+\titlecontents{subsection}[4em]{\songti \zihao{-4}}
+{\thecontentslabel\quad}{}
+{\hspace{.5em}\titlerule*{.}\contentspage}
 %===================================学位论文独创性声明================================
 \newcommand{\bit@declare@text}{
   本人郑重声明：所提交的学位论文是我本人在指导教师的指导下进行的研究工作获得的研究成果。尽我所知，文中除特别标注和致谢的地方外，学位论文中不包含其他人已经发表或撰写过的研究成果，也不包含为获得北京理工大学或其它教育机构的学位或证书所使用过的材料。与我一同工作的合作者对此研究工作所做的任何贡献均已在学位论文中作了明确的说明并表示了谢意。\par 特此申明。
@@ -316,6 +301,7 @@
   \pdfbookmark[0]{封面}{titlepage}
   \bit@zh@titlepage
   \bit@en@titlepage
+  \makeVerticalTitle
   \bit@make@statement
   \setcounter{page}{1}
   \frontmatter
@@ -323,34 +309,46 @@
 
 %=============研究生中文扉页==========================
 \newcommand{\bit@zh@titlepage}{
-\thispagestyle{empty}
-  \begin{titlepage}
-    \heiti\zihao{5}
-    \begin{flushleft}
-    \begin{tabular}{lp{7cm}}
-      \heiti 中文分类号： & \bit@classified    \\
-      \heiti UDC分类号： & \bit@udc        \\
-    \end{tabular}
-    \end{flushleft}
-    \vskip 2cm
-   % \zihao{4}\heiti \bit@zhdegree
-    \vskip 2cm
-    \zihao{-2}\heiti \bit@zhtitle
-    \vskip 2cm
-    %\zihao{3}\heiti \bit@zhauthor
-    \vskip 4cm
-    \zihao{-3}\heiti
-    \begin{tabular}{rc}
-      \makebox[12em][l]{作者姓名：}              & \bit@zhauthor    \\
-      \makebox[12em][l]{学 院 名称：}            & \bit@zhacademy      \\
-      \makebox[12em][l]{指 导 教 师：}           & \bit@zhadvisor    \\
-      \makebox[12em][l]{答辩委员会主席：}         & \bit@zhchairman    \\
-      \makebox[12em][l]{申 请 学 位 ：}          & \bit@zhdegree    \\
-      \makebox[12em][l]{学科专业 ：}             & \bit@zhmajor    \\
-       \makebox[12em][l]{学位授予单位  ：}       & \bit@zhschool    \\
-      \makebox[12em][l]{论文答辩日期：}          & \bit@zhdate       \\
-    \end{tabular}
-  \end{titlepage}
+	\thispagestyle{empty}  
+	\begin{center}
+		\vspace*{72mm}
+		{\heiti\zihao{-2}\bit@zhtitle}
+		\vskip 45mm
+		{\heiti\zihao{-2}\bit@zhauthor}
+		\vskip 8mm
+		{\songti\zihao{4}\bit@zhdate}
+	\end{center}
+	\clearpage
+	\newpage
+	\cleardoublepage
+   \thispagestyle{empty}
+  
+  {
+  	{\heiti \zihao{5} \noindent 中文分类号:} \bit@classified \\ 
+  	{\heiti \zihao{5} UDC分类号:}  \bit@udc  
+  }
+    \begin{center}
+    	\vskip \stretch{0.8}
+    	{\heiti\zihao{-2}\bit@zhtitle}
+    	\vskip \stretch{1}
+    	
+    	{\fangsong\zihao{4}}      
+    	\def\tabcolsep{1pt}
+    	\def\arraystretch{1.2}
+    	
+    {\zihao{-3}\heiti
+    \begin{tabular}{l p{1mm} c}
+      {作\,者\,姓\,名：} & & \bit@underline[150pt]{\bit@zhauthor}    \\
+      {学\, 院 \,名\,称：} & &\bit@underline[150pt]{\bit@zhacademy}      \\
+      {指 \,导 \,教 \,师：} & & \bit@underline[150pt]{\bit@zhadvisor}   \\
+      {答辩委员会主席：} & & \bit@underline[150pt]{\bit@zhchairman}   \\
+      {申\, 请 \,学 \,位:} & & \bit@underline[150pt]{\bit@zhdegree}   \\
+      {学\,科\,专\,业 ：} & & \bit@underline[150pt]{\bit@zhmajor }  \\
+      {学位授予单位 ：} & & \bit@underline[150pt]\bit@zhschool    \\
+      {论文答辩日期：} & & \bit@underline[150pt]{\bit@zhdate}      \\
+    \end{tabular}}
+  \end{center}
+  \vskip \stretch{0.5}
   \clearpage
 }
 
@@ -364,21 +362,49 @@
     \zihao{-2}\bit@entitle
     \vskip 5cm
     \zihao{-3}
-    \begin{tabular}{rl}
-     \makebox[12em][l]{Candidate Name：}              & \bit@enauthor    \\
-     \makebox[12em][l]{School or Department:}            & \bit@enacademy      \\
-     \makebox[12em][l]{Faculty Mentor:}              & \bit@enadvisor    \\
-     \makebox[12em][l]{Chair, Thesis Committee：}         & \bit@enchairman    \\
-     \makebox[12em][l]{Degree Applied:  }          & \bit@endegree    \\
-     \makebox[12em][l]{Major：}             & \bit@enmajor    \\
-     \makebox[12em]{Degree by:}       & \bit@enschool    \\
-     \makebox[12em][l]{The Date of Defence：}          & \bit@endate       \\
+    \begin{tabular}{lc}
+     {Candidate Name：}                & \bit@underline[150pt]{\bit@enauthor}    \\
+     {School or Department:}            &  \bit@underline[150pt]{\bit@enacademy}      \\
+     {Faculty Mentor:}                  & \bit@underline[150pt]{\bit@enadvisor}    \\
+    {Chair, Thesis Committee：}         & \bit@underline[150pt]{\bit@enchairman}    \\
+     {Degree Applied:  }               & \bit@underline[150pt]\bit@endegree    \\
+     {Major：}                         & \bit@underline[150pt]{\bit@enmajor }  \\
+     {Degree by:}      				 & \bit@underline[150pt]{\bit@enschool}    \\
+    {The Date of Defence：}          & \bit@underline[150pt]{\bit@endate }      \\
     \end{tabular}
+    
   \end{titlepage}
   \cleardoublepage
 }
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 书脊：
+% |学位论文的书脊用黑体三号，上方写论文题目，下方写“北京理工大学”，
+% |论文题目与“北京理工大学”间距2cm；													
+% |论文题目距上边界、“北京理工大学”距下边界均为5cm。 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand \makeVerticalTitle{
+	\cleardoublepage
+	\thispagestyle{empty}
+	\vspace*{4mm}
+	\begin{center}
+		{
+			\heiti\zihao{3}
+			%\setstretch{0.8}   
+			\begin{minipage}{1.9em}
+				\bit@zhtitle
+				\vskip 20mm
+				\bit@zhschool
+			\end{minipage}
+		}
+	\end{center}
+	\clearpage
+	\if@twoside
+	\thispagestyle{empty}
+	\cleardoublepage
+	\fi
+	
+}
+%====================== 摘要==============================================================
 \newenvironment{zhabstract}{
     \chapter[摘要]{摘要}
     \
