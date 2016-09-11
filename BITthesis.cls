@@ -210,7 +210,6 @@
   }
   \ctexset{section={
 	format={\raggedright\bfseries\heiti\zihao{4}},
-	
 %	beforeskip=12bp,
 	%afterskip=12bp,
 	}
@@ -309,7 +308,7 @@
 
 %=============研究生中文扉页==========================
 \newcommand{\bit@zh@titlepage}{
-	\thispagestyle{empty}  
+	\thispagestyle{empty}
 	\begin{center}
 		\vspace*{72mm}
 		{\heiti\zihao{-2}\bit@zhtitle}
@@ -322,20 +321,20 @@
 	\newpage
 	\cleardoublepage
    \thispagestyle{empty}
-  
+
   {
-  	{\heiti \zihao{5} \noindent 中文分类号:} \bit@classified \\ 
-  	{\heiti \zihao{5} UDC分类号:}  \bit@udc  
+  	{\heiti \zihao{5} \noindent 中文分类号:} \bit@classified \\
+  	{\heiti \zihao{5} UDC分类号:}  \bit@udc
   }
     \begin{center}
     	\vskip \stretch{0.8}
     	{\heiti\zihao{-2}\bit@zhtitle}
     	\vskip \stretch{1}
-    	
-    	{\fangsong\zihao{4}}      
+
+    	{\fangsong\zihao{4}}
     	\def\tabcolsep{1pt}
     	\def\arraystretch{1.2}
-    	
+
     {\zihao{-3}\heiti
     \begin{tabular}{l p{1mm} c}
       {作\,者\,姓\,名：} & & \bit@underline[150pt]{\bit@zhauthor}    \\
@@ -372,14 +371,14 @@
      {Degree by:}      				 & \bit@underline[150pt]{\bit@enschool}    \\
     {The Date of Defence：}          & \bit@underline[150pt]{\bit@endate }      \\
     \end{tabular}
-    
+
   \end{titlepage}
   \cleardoublepage
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 书脊：
 % |学位论文的书脊用黑体三号，上方写论文题目，下方写“北京理工大学”，
-% |论文题目与“北京理工大学”间距2cm；													
+% |论文题目与“北京理工大学”间距2cm；
 % |论文题目距上边界、“北京理工大学”距下边界均为5cm。 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand \makeVerticalTitle{
@@ -389,7 +388,7 @@
 	\begin{center}
 		{
 			\heiti\zihao{3}
-			%\setstretch{0.8}   
+			%\setstretch{0.8}
 			\begin{minipage}{1.9em}
 				\bit@zhtitle
 				\vskip 20mm
@@ -402,7 +401,7 @@
 	\thispagestyle{empty}
 	\cleardoublepage
 	\fi
-	
+
 }
 %====================== 摘要==============================================================
 \newenvironment{zhabstract}{
