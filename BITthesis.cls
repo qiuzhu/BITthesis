@@ -452,19 +452,50 @@
 \numberwithin{figure}{chapter}
 \renewcommand{\thefigure}{\thechapter.\arabic{figure}}
 
-%==========总结环境================
-\newenvironment{summary}
-{ \setcounter{secnumdepth}{-2}
-	\chapter{总结}
 
-}{}
-\newenvironment{ack}{
-  \chapter{致谢}
-  \setcounter{secnumdepth}{-2}
-}{}
-\newenvironment{publications}{
-  \chapter{攻读学位期间取得的研究成果}
-  \setcounter{secnumdepth}{-2}
+%%======================各种自定义标签=======================
+%% labels in the summary
+\def\bit@label@summary{结论}
+
+%%
+%% labels in the publications
+%%
+\def\bit@label@publications{攻读学位期间发表的论文与研究成果清单}
+
+%% labels in the thanks
+%%
+\def\bit@label@thanks{致谢}
+%==========自定义环境定义=============================
+%%===================================================%%
+\addtocontents{toc}{\let\string\CTEX@spaceChar\relax}
+%==============论文成果发表页==================================
+\newenvironment{publications}[1]
+     {\chapter{\bit@label@publications}%
+      \@mkboth{\MakeUppercase\bit@label@publications}
+              {\MakeUppercase\bit@label@publications}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `publications' environment}}%
+      \endlist}
+%===================致谢=========================
+\renewenvironment{thanks}
+  {\chapter{\bit@label@thanks}\label{last}}
+  {}
+%===============总结====================================
+\newenvironment{summary}
+{\chapter*{\bit@label@summary\markboth{\bit@label@summary}{}}\addcontentsline{toc}{chapter}{\bit@label@summary}
 }{}
 
 %%=========================载入其他常用宏包=========================================
