@@ -75,9 +75,9 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
 \ifbit@istwoside
-\LoadClass[cs4size,a4paper,twoside,openright,fancyhdr,fntef]{ctexbook}
+\LoadClass[zihao=-4,a4paper,twoside,openright,fancyhdr,fntef]{ctexbook}
 \else
-\LoadClass[cs4size,a4paper,oneside,openany,fancyhdr,fntef]{ctexbook}
+\LoadClass[zihao=-4,a4paper,oneside,openany,fancyhdr,fntef]{ctexbook}
 \fi
 
 %%=========================================加载常用宏=========================================
