@@ -21,44 +21,65 @@
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \ProvidesClass{BITthesis}
     [2016/08/21 v0.0.2 bit Thesis Template]
-\RequirePackage{kvoptions}
-%%=======声明选项：bit@opt 用于设置论文类型及打印方式===========================
-\SetupKeyvalOptions{family=bit@opt,prefix=bit@opt@,setkeys=\kvsetkeys}
-%\DeclareBoolOption[false]{bachelor}
-\DeclareBoolOption[false]{master}
-\DeclareBoolOption[false]{doctor}
-\DeclareBoolOption[false]{pdf}
-\DeclareComplementaryOption{print}{pdf}
-%%============bit@page 用于设置文档分页样式====================================
-\SetupKeyvalOptions{family=bit@pae,prefix=bit@page@,setkeys=\kvsetkeys}
-\DeclareBoolOption[false]{oneside}
-\DeclareComplementaryOption{twoside}{oneside}
-\DeclareBoolOption[false]{openany}
-\DeclareComplementaryOption{openright}{openany}
-%\DeclareBoolOption[true]{pageouter}
-%\DeclareComplementaryOption{pagecenter}{pageouter}
-\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
-
-%%===================处理bit@opt 选项，判断论文类型，若没指定默认使用硕士研究生论文模板
-\ProcessKeyvalOptions{bit@opt}
-  \ifbit@opt@doctor\relax\else
-    \bit@opt@mastertrue
-  \fi
-%================================
-
-%\ifbit@opt@pdf
-    %\bit@page@onesidetrue
-   % \bit@page@pageouterfalse
+%\RequirePackage{kvoptions}
+%%%=======声明选项：bit@opt 用于设置论文类型及打印方式===========================
+%\SetupKeyvalOptions{family=bit@opt,prefix=bit@opt@,setkeys=\kvsetkeys}
+%%\DeclareBoolOption[false]{bachelor}
+%\DeclareBoolOption[false]{master}
+%\DeclareBoolOption[false]{doctor}
+%\DeclareBoolOption[false]{pdf}
+%\DeclareComplementaryOption{print}{pdf}
+%%%============bit@page 用于设置文档分页样式====================================
+%\SetupKeyvalOptions{family=bit@pae,prefix=bit@page@,setkeys=\kvsetkeys}
+%\DeclareBoolOption[false]{oneside}
+%\DeclareComplementaryOption{twoside}{oneside}
+%\DeclareBoolOption[false]{openany}
+%\DeclareComplementaryOption{openright}{openany}
+%%\DeclareBoolOption[true]{pageouter}
+%%\DeclareComplementaryOption{pagecenter}{pageouter}
+%\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+%
+%%%===================处理bit@opt 选项，判断论文类型，若没指定默认使用硕士研究生论文模板
+%\ProcessKeyvalOptions{bit@opt}
+%  \ifbit@opt@doctor\relax\else
+%    \bit@opt@mastertrue
+%  \fi
+%%================================
+%
+%%\ifbit@opt@pdf
+%    %\bit@page@onesidetrue
+%   % \bit@page@pageouterfalse
+%%\fi
+%%%%==================将选项交给ctexbook 处理=======================================
+%\ifbit@page@openany
+%    \PassOptionsToClass{openany}{ctexbook}
 %\fi
-%%%==================将选项交给ctexbook 处理=======================================
-\ifbit@page@openany
-    \PassOptionsToClass{openany}{ctexbook}
+%\ifbit@page@oneside
+%    \PassOptionsToClass{oneside}{ctexbook}
+%\fi
+%%%========================载入ctexbook 文档类，并设置纸张大小、编码格式及字号===================
+%\LoadClass[a4paper, UTF8]{ctexbook}
+\def\whutthesis{\textsc{BIT}\textsc{thesis}}
+%%\def\version{0.1.2b}
+\newif\ifbit@master\bit@masterfalse
+\newif\ifbit@doctor\bit@doctorfalse
+\newif\ifbit@istwoside\bit@istwosidefalse
+
+\DeclareOption{twoside}{\bit@istwosidetrue}
+\DeclareOption{master}{\bit@mastertrue}
+\DeclareOption{doctor}{\bit@doctortrue}
+
+\DeclareOption*{\PackageWarning{BITthesis}{Unknown Option '\CurrentOption'}}
+%% 将选项传递给 ctexbook 类
+%% 用户至少要提供一个选项：指定论文类型。
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+\ProcessOptions\relax
+\ifbit@istwoside
+\LoadClass[cs4size,a4paper,twoside,openright,fancyhdr,fntef]{ctexbook}
+\else
+\LoadClass[cs4size,a4paper,oneside,openany,fancyhdr,fntef]{ctexbook}
 \fi
-\ifbit@page@oneside
-    \PassOptionsToClass{oneside}{ctexbook}
-\fi
-%%========================载入ctexbook 文档类，并设置纸张大小、编码格式及字号===================
-\LoadClass[a4paper, cs4size, UTF8]{ctexbook}
+
 %%=========================================加载常用宏=========================================
 \RequirePackage{ifxetex}
 %\RequirePackage{xparse}
@@ -69,12 +90,17 @@
 \RequirePackage[shortlabels]{enumitem}
 %\RequirePackage{CJKfntef}
 \RequirePackage{array}
-
-%\RequirePackage[numbers,super,compress]{natbib}
+\RequirePackage{amsmath,amssymb,amsfonts}
+\RequirePackage[perpage,symbol*,stable]{footmisc}
+\RequirePackage{subfig}
+\RequirePackage{float}
+\RequirePackage[numbers,super,compress,square]{natbib}
 %%============================设置西文字体，中文字体由ctex 自动设置=============================
+%\setCJKmainfont{SimSun}
+%\setCJKmainfont{Adobe Song Std}
 \setmainfont{Times New Roman}
-%\setsansfont{Arial}
-%\setmonofont{Courier New}
+\setsansfont{Arial}
+\setmonofont{Courier New}
 %\newCJKfontfamily{\hwxk}{STXingkai}
 %%======超链接与书签========
 \RequirePackage{hyperref}
@@ -125,7 +151,16 @@
 \bit@define@term{udc}                      % UDC编号
 \bit@define@term{secret}                   % 密级
 %%==============引用geometry 宏包设置纸张和页面========================
-\RequirePackage[top=35mm,headheight=10mm,footskip=7mm,bottom=25mm,left=27mm,right=27mm,paper=a4paper]{geometry} %设置版面:上3.5cm，下2.5cm，左2.7cm，右2.7cm，页眉2.5cm，页脚1.8cm，装订线0cm
+%\RequirePackage[top=35mm,headheight=10mm,footskip=7mm,bottom=25mm,left=27mm,right=27mm,paper=a4paper]{geometry} %设置版面:上3.5cm，下2.5cm，左2.7cm，右2.7cm，页眉2.5cm，页脚1.8cm，装订线0cm
+\usepackage[%
+paper=a4paper,%
+top=3.5cm,% 上 3.5cm %
+bottom=2.5cm,% 下 2.5cm %
+left=2.7cm,% 左 2.7cm %
+right=2.7cm,% 右 2.7cm %
+headheight=1.0cm,% 页眉 2.5cm %
+footskip=0.7cm% 页脚 1.8cm %
+]{geometry} % 页面设置 %
 %% ====================定义几个常用的数学常量符号=====================================
 \newcommand{\me}{\mathrm{e}} %定义 对数常数e，虚数符号i,j以及微分算子d为直立体。
 \newcommand{\mi}{\mathrm{i}}
@@ -135,7 +170,8 @@
 %\RequirePackage[pagestyles]{titlesec}
 
 %%===================页眉标题宏============================
-\ifbit@opt@doctor
+%\ifbit@opt@doctor
+\ifbit@doctor
 \newcommand{\bit@zh@thesis@name}{北京理工大学博士学位论文}
 %\newcommand{\bit@en@thesis@name}{BIT}
 \else
@@ -157,7 +193,7 @@
 \fancypagestyle{bit@headings}{%
   \fancyhf{}
   \fancyfoot[C]{\songti\zihao{5} ~{\thepage}~}
-  \fancyhead[C]{\ifbit@opt@master\zihao{5}\songti\bit@header@title
+  \fancyhead[C]{\ifbit@master\zihao{5}\songti\bit@header@title
                 \else\zihao{5}\songti\bit@header@title\fi}
   \renewcommand{\headrulewidth}{0.4pt}
   \renewcommand{\footrulewidth}{0pt}}
@@ -184,10 +220,10 @@
   \pagestyle{bit@headings}
 }
 %=================修改backmatter===============================================================
-\renewcommand\backmatter{%
-  \@mainmattertrue
-   \pagestyle{bit@headings}
-   }
+%\renewcommand\backmatter{%
+  %\@mainmattertrue
+   %\pagestyle{bit@headings}
+   %}
 
 %%===============================设置带圆圈的标准=============================================
 \usepackage{tikz}
@@ -198,35 +234,38 @@
     \node at (char.center) {\makebox[0pt][c]{#2}};}}
 \robustify{\circled}
 %%===================设置全文行距及段落行距==========================
-\setlength{\baselineskip}{22bp}
+%\setlength{\baselineskip}{22bp}
+\RequirePackage{setspace}
+\setstretch{1.517}
 %%============================设置标题格式=================================================
 \ctexset{chapter/name={第,章},
   chapter/number={\arabic{chapter}},
-  chapter/format={\bfseries\centering\zihao{3}\heiti},
+  chapter/format={\bfseries \heiti \centering \zihao{3}},
   %aftername={\quad{}} %章序号与章名间空一个汉字符
   chapter/pagestyle ={bit@headings},
   chapter/beforeskip={10pt},
-  chapter/afterskip={12pt},
+  chapter/afterskip={30pt},
   }
   \ctexset{section={
-	format={\raggedright\bfseries\heiti\zihao{4}},
-%	beforeskip=12bp,
+	format={\raggedright \bfseries \heiti \zihao{4}},
+	%beforeskip=12bp,
 	%afterskip=12bp,
 	}
 }
 % ==========设置二节标题格式========================================
+
 %黑体小四加粗顶左，单倍行距，序号与题目间空一个汉字符
 \ctexset{subsection={
-   format={\bfseries\heiti\raggedright\zihao{-4}},
-   beforeskip=8bp,
-   afterskip=12bp,
+   format={\bfseries \heiti \raggedright \zihao{-4}},
+   %beforeskip=8bp,
+   %afterskip=12bp,
 	}
 }
 % 设置三节标题格式：黑体小四居左书写，单倍行距，序号与题目间空一个汉字符
 \ctexset{subsubsection={
-      format={\heiti\raggedright\zihao{-4}},
-      beforeskip=12bp,
-      afterskip=12bp,
+      format={\heiti \raggedright \zihao{-4}},
+      %beforeskip=12bp,
+      %afterskip=12bp,
 	}
 }
 
@@ -413,12 +452,14 @@
     \fontsize{12bp}{20bp}\selectfont
   }{}
 
-\newcommand{\zhkeywords}[2][\zihao{5}]{
-    \par\phantom{关键词}\par\noindent
-    {
-      #1\textbf{关键词：}#2
-    }
-  }
+%\newcommand{\zhkeywords}[2][\zihao{5}]{
+%    \par\phantom{关键词}\par\noindent
+    %{
+      %#1\bf{关键词：}#2
+   % }
+  %}
+ \newcommand{\zhkeywords}[1][\zihao{5}]{%
+   \vspace{2ex}\noindent{\heiti 关键词：} #1}
 
 
   \newcommand{\enkeywords}[2][\zihao{5}]{
@@ -451,8 +492,26 @@
 \graphicspath{{./}{figures/}}
 \numberwithin{figure}{chapter}
 \renewcommand{\thefigure}{\thechapter.\arabic{figure}}
-
-
+%%===========================================参考文献======================================
+\renewenvironment{thebibliography}[1]
+  {\chapter{\bibname}%
+   \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
+   \list{\@biblabel{\@arabic\c@enumiv}}%
+          {\settowidth\labelwidth{\@biblabel{#1}}%
+        \leftmargin\labelwidth
+           \advance\leftmargin\labelsep
+         \@openbib@code
+          \usecounter{enumiv}%
+          \let\p@enumiv\@empty
+         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+   \sloppy
+     \clubpenalty4000
+    \@clubpenalty \clubpenalty
+     \widowpenalty4000%
+    \sfcode`\.\@m}
+    {\def\@noitemerr
+     {\@latex@warning{Empty `thebibliography' environment}}%
+  \endlist}
 %%======================各种自定义标签=======================
 %% labels in the summary
 \def\bit@label@summary{结论}
@@ -473,6 +532,7 @@
      {\chapter{\bit@label@publications}%
       \@mkboth{\MakeUppercase\bit@label@publications}
               {\MakeUppercase\bit@label@publications}%
+         \zihao{5}
       \list{\@biblabel{\@arabic\c@enumiv}}%
            {\settowidth\labelwidth{\@biblabel{#1}}%
             \leftmargin\labelwidth
@@ -491,13 +551,31 @@
       \endlist}
 %===================致谢=========================
 \renewenvironment{thanks}
-  {\chapter{\bit@label@thanks}\label{last}}
+  {\chapter{\bit@label@thanks}\label{last}
+  \fangsong
+  }
   {}
 %===============总结====================================
 \newenvironment{summary}
 {\chapter*{\bit@label@summary\markboth{\bit@label@summary}{}}\addcontentsline{toc}{chapter}{\bit@label@summary}
 }{}
-
+%%%============================术语=====================
+\newcommand{\bit@denotation@name}{主要符号对照表}
+\newenvironment{denotation}[1][2.5cm]{
+    \chapter{\bit@denotation@name} % no tocline
+    \noindent\begin{list}{}%
+    {\vskip-30bp\zihao{-4}
+     \renewcommand\makelabel[1]{##1\hfil}
+     \setlength{\labelwidth}{#1} % 标签盒子宽度
+     \setlength{\labelsep}{0.5cm} % 标签与列表文本距离
+     \setlength{\itemindent}{0cm} % 标签缩进量
+     \setlength{\leftmargin}{\labelwidth+\labelsep} % 左边界
+     \setlength{\rightmargin}{0cm}
+     \setlength{\parsep}{0cm} % 段落间距
+     \setlength{\itemsep}{0cm} % 标签间距
+    \setlength{\listparindent}{0cm} % 段落缩进量
+    \setlength{\topsep}{0pt} % 标签与上文的间距
+   }}{\end{list}}
 %%=========================载入其他常用宏包=========================================
 \RequirePackage{booktabs}
 \RequirePackage{longtable}
