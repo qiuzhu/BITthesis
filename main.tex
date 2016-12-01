@@ -1,22 +1,33 @@
-%!TeX program = xelatex
-\documentclass[oneside,doctor]{BITthesis}
 
-\zhtitle{\LaTeX{}论文模板}
-\entitle{The Template of Thesis Written by \LaTeX}
-\zhauthor{张三}
-\enauthor{Zhang San}
-\zhadvisor{李四(副教授)}
-\enadvisor{Li Si}
+\documentclass[oneside,master,cs4size]{BITthesis}
+%\usepackage[numbers,sort&compress]{natbib}
+%\usepackage{unicode-math}
+%\setmainfont{XITS}
+%\setmathfont{XITS Math}
+%\usepackage{appendix}
+%\usepackage{stix}
+
+\bibliographystyle{GBT7714-2005NLang}
+\zhtitle{jhhhhh金合欢花尼特性研究}
+\entitle{eeee lslsop sklssk sssj}
+\zhauthor{啦啦啦}
+\enauthor{llopojuiu}
+\zhadvisor{买买买}
+\enadvisor{Xie Kan}
+\zhchairman{哈哈哈哈教授}
+\enchairman{哈哈哈}
 \zhdegree{工程硕士}
 \endegree{Master of Engineering}
-\zhdate{2016年8月9日}
+\zhdate{2016年10月9号}
 \endate{ 2016}
-\zhacademy{计算机科学与技术学院}
-\zhmajor{计算机科学与技术}
-
-\classified{TP393}
-\udc{L1606}
-\secret{公开}
+\zhacademy{哈哈哈}
+\enacademy{Aerospace Engineering}
+\zhmajor{哈哈哈}
+\zhschool{北京理工大学}
+\enschool{Beijing Institute of Technology}
+\classified{TQ028.1}
+\udc{540}
+%\secret{公开}
 
 \providecommand{\cs}{\relax}
 \renewcommand{\cs}[1]{\textbackslash#1}
@@ -27,20 +38,64 @@
 
 
 \input{chapters/abstract}
-
+\input{chapters/denotation}
 \tableofcontents
 
 \mainmatter
 
-\input{chapters/intro}
-\input{chapters/table}
-\input{chapters/chap01}
-\input{chapters/chap02}
 
+
+\input{chapters/chapter1}
+\input{chapters/chapter2}
+\include{chapters/summary} %% 全文总结
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 附录(章节编号重新计算，使用字母进行编号)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 文后(无章节编号)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% 参考文献
+% 使用 BibTeX
+% 包含参考文献文件.bib
+{
+	\zihao{5}
+	\nocite{*}
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{参考文献} %向目录中添加条目，以章的名义
+	\bibliography{reference/chap1,reference/chap2,reference/bibtex_database}
+
+}
+
+\makeatletter
+%%   插图索引
+%%  \listoffigures
+%%   表格索引
+%%  \listoftables
+%%   公式索引
+%%  \listofequations
+\makeatother
+\begin{appendix}
+	
+\addcontentsline{toc}{chapter}{附录}
+% 附录中编号形式是"A-1"的样子
+\renewcommand\theequation{\Alph{chapter}--\arabic{equation}}
+\renewcommand\thefigure{\Alph{chapter}--\arabic{figure}}
+\renewcommand\thetable{\Alph{chapter}--\arabic{table}}
+\include{chapters/app1} % 更新记录
+\include{chapters/app2} % 麦克斯韦方程
+
+\end{appendix}
+% 发表文章目录
 \backmatter
-% \input{chapters/summaryt}
-\bibliographystyle{bitstyle}
-\input{chapters/publications}
-\input{chapters/ack}
+\include{chapters/pub}
+
+% 致谢
+\include{chapters/thanks}
 
 \end{document}
