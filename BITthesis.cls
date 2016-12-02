@@ -59,7 +59,7 @@
 %\fi
 %%%========================载入ctexbook 文档类，并设置纸张大小、编码格式及字号===================
 %\LoadClass[a4paper, UTF8]{ctexbook}
-\def\whutthesis{\textsc{BIT}\textsc{thesis}}
+\def\BITthesis{\textsc{BIT}\textsc{thesis}}
 %%\def\version{0.1.2b}
 \newif\ifbit@master\bit@masterfalse
 \newif\ifbit@doctor\bit@doctorfalse
@@ -81,20 +81,42 @@
 \fi
 
 %%=========================================加载常用宏=========================================
+%这几个宏包用于提升LATEX 2"的命令定义和命令处理性能
+\RequirePackage{etoolbox}
+\RequirePackage{xparse}
+\RequirePackage{environ}
+\RequirePackage{calc}
 \RequirePackage{ifxetex}
-%\RequirePackage{xparse}
-%\RequirePackage{amsmath}
-\RequirePackage{tgcursor}
 \RequirePackage{graphicx}
 \RequirePackage{pdfpages}
 \RequirePackage[shortlabels]{enumitem}
 %\RequirePackage{CJKfntef}
 \RequirePackage{array}
+\RequirePackage{microtype}
+\RequirePackage{fontspec}
 \RequirePackage{amsmath,amssymb,amsfonts}
-\RequirePackage[perpage,symbol*,stable]{footmisc}
+\RequirePackage[bottom,perpage,hang,symbol*]{footmisc}
 \RequirePackage{subfig}
 \RequirePackage{float}
-\RequirePackage[numbers,super,compress,square]{natbib}
+%\RequirePackage[shortlabels,inline]{enumitem}
+\RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
+\RequirePackage[numbers,square,comma,super,sort&compress]{natbib}
+%==============删除默认模板（book.cls ）在章之间引入的垂直间隔。要放在hyperref 之前才会生效。===============
+\patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{} % lof
+\patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{} % lot
+\RequirePackage[hyperfootnotes=false,]{hyperref}
+%%======超链接与书签========
+\hypersetup{
+	CJKbookmarks=true,
+	bookmarksopen=true,
+	bookmarksnumbered=true,
+	bookmarksopenlevel=1,
+	pdfborder= 0 0 0,
+	unicode=true,
+	linktoc=all,
+	allcolors=black,
+	colorlinks=true,
+}
 %%============================设置西文字体，中文字体由ctex 自动设置=============================
 %\setCJKmainfont{SimSun}
 %\setCJKmainfont{Adobe Song Std}
@@ -102,19 +124,8 @@
 \setsansfont{Arial}
 \setmonofont{Courier New}
 %\newCJKfontfamily{\hwxk}{STXingkai}
-%%======超链接与书签========
-\RequirePackage{hyperref}
-\hypersetup{
-  CJKbookmarks=true,
-  bookmarksopen=true,
-  bookmarksnumbered=true,
-  bookmarksopenlevel=1,
-  pdfborder= 0 0 0,
-  unicode=true,
-  linktoc=all,
-  allcolors=black,
-  colorlinks=true,
-}
+\providecommand{\cs}{\relax}
+\renewcommand{\cs}[1]{\textbackslash#1}
 %%=====================生成整数倍汉字宽度的空格，默认为1================================
 \newcommand{\zhspace}[1][1]{\hspace{#1\ccwd}}
 %%======================生成空的下划线，内部使用======================================
@@ -236,20 +247,22 @@ footskip=0.7cm% 页脚 1.8cm %
 %%===================设置全文行距及段落行距==========================
 %\setlength{\baselineskip}{22bp}
 \RequirePackage{setspace}
-\setstretch{1.517}
+\setstretch{1.52}
 %%============================设置标题格式=================================================
 \ctexset{chapter/name={第,章},
   chapter/number={\arabic{chapter}},
   chapter/format={\bfseries \heiti \centering \zihao{3}},
   %aftername={\quad{}} %章序号与章名间空一个汉字符
   chapter/pagestyle ={bit@headings},
-  chapter/beforeskip={10pt},
-  chapter/afterskip={30pt},
+  chapter/beforeskip={10bp},
+  chapter/afterskip={22bp},
+%  fixskip = true,
   }
   \ctexset{section={
 	format={\raggedright \bfseries \heiti \zihao{4}},
-	%beforeskip=12bp,
-	%afterskip=12bp,
+	%beforeskip=19bp,
+	%afterskip=19bp,
+%	fixskip = true,
 	}
 }
 % ==========设置二节标题格式========================================
@@ -257,15 +270,17 @@ footskip=0.7cm% 页脚 1.8cm %
 %黑体小四加粗顶左，单倍行距，序号与题目间空一个汉字符
 \ctexset{subsection={
    format={\bfseries \heiti \raggedright \zihao{-4}},
-   %beforeskip=8bp,
-   %afterskip=12bp,
+  % beforeskip=19bp,
+   % afterskip=19bp,
+   %fixskip = true,
 	}
 }
 % 设置三节标题格式：黑体小四居左书写，单倍行距，序号与题目间空一个汉字符
 \ctexset{subsubsection={
       format={\heiti \raggedright \zihao{-4}},
-      %beforeskip=12bp,
-      %afterskip=12bp,
+   %   beforeskip=19bp,
+    %  afterskip=19bp,
+   % fixskip = true,
 	}
 }
 
@@ -449,20 +464,17 @@ footskip=0.7cm% 页脚 1.8cm %
   }{}
   \newenvironment{enabstract}{
     \chapter[Abstract]{Abstract}
-    \fontsize{12bp}{20bp}\selectfont
+   % \fontsize{12bp}{20bp}\selectfont
+  % \setstretch{1.39}
+  \linespread{1.39}\selectfont
   }{}
 
-%\newcommand{\zhkeywords}[2][\zihao{5}]{
-%    \par\phantom{关键词}\par\noindent
-    %{
-      %#1\bf{关键词：}#2
-   % }
-  %}
- \newcommand{\zhkeywords}[1][\zihao{5}]{%
-   \vspace{2ex}\noindent{\heiti 关键词：} #1}
+
+ \newcommand{\zhkeywords}[1]{%
+   \vspace{2ex}\noindent{\heiti \zihao{5} 关键词：} {\zihao{5}#1}}
 
 
-  \newcommand{\enkeywords}[2][\zihao{5}]{
+  \newcommand{\enkeywords}[2][]{
     \par\phantom{keywords}\par\noindent
     {
       #1\textbf{KEY WORDS: }#2
@@ -474,7 +486,7 @@ footskip=0.7cm% 页脚 1.8cm %
 \DeclareCaptionLabelSeparator{zhspace}{\hspace{1\ccwd}}
 \DeclareCaptionFont{fontsize}{\zihao{5}}
 \captionsetup{
-  font = {fontsize, bf},
+  font = {fontsize},
   labelsep = zhspace,
 }
 \captionsetup[table]{
@@ -492,26 +504,66 @@ footskip=0.7cm% 页脚 1.8cm %
 \graphicspath{{./}{figures/}}
 \numberwithin{figure}{chapter}
 \renewcommand{\thefigure}{\thechapter.\arabic{figure}}
-%%===========================================参考文献======================================
+%===========让浮动对象缺省值更宽松=================
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\floatpagefraction}{0.60}
+
+%===========================================参考文献======================================
+%\renewenvironment{thebibliography}[1]
+%  {\chapter{\bibname}%
+%   \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
+%   \list{\@biblabel{\@arabic\c@enumiv}}%
+%          {\settowidth\labelwidth{\@biblabel{#1}}%
+%        \leftmargin\labelwidth
+%           \advance\leftmargin\labelsep
+%         \@openbib@code
+%          \usecounter{enumiv}%
+%          \let\p@enumiv\@empty
+%         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+%   \sloppy
+%     \clubpenalty4000
+%    \@clubpenalty \clubpenalty
+%     \widowpenalty4000%
+%    \sfcode`\.\@m}
+%    {\def\@noitemerr
+%     {\@latex@warning{Empty `thebibliography' environment}}%
+%  \endlist}
+\pretocmd{\bibliography}{%
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bit@bib@name}}{}{}
+%==参考文献使用五号字，同时优化参考文献占用的空间
+\AtBeginDocument{%
+	\pretocmd{\bibliography}{\begingroup\zihao{5}}{}{}
+	\apptocmd{\bibliography}{\endgroup}{}{}
+	}%AtBeginDocument
+ \renewcommand\@biblabel[1]{\zihao{5}[#1]}
 \renewenvironment{thebibliography}[1]
-  {\chapter{\bibname}%
-   \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
-   \list{\@biblabel{\@arabic\c@enumiv}}%
-          {\settowidth\labelwidth{\@biblabel{#1}}%
-        \leftmargin\labelwidth
-           \advance\leftmargin\labelsep
-         \@openbib@code
-          \usecounter{enumiv}%
-          \let\p@enumiv\@empty
-         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-   \sloppy
-     \clubpenalty4000
-    \@clubpenalty \clubpenalty
-     \widowpenalty4000%
-    \sfcode`\.\@m}
-    {\def\@noitemerr
-     {\@latex@warning{Empty `thebibliography' environment}}%
-  \endlist}
+{\chapter*{\bit@bib@name
+	 \@mkboth{\bit@bib@name}{}}%
+	 \list{\@biblabel{\@arabic\c@enumiv}}%
+{\settowidth\labelwidth{\@biblabel{#1}}%
+ \leftmargin\labelwidth
+\advance\leftmargin\labelsep
+ \setlength{\parsep}{1mm}
+\setlength{\labelsep}{0.5em}
+ \setlength{\itemsep}{0.05pc}
+ \setlength{\listparindent}{0in}
+\setlength{\itemindent}{0in}
+\setlength{\rightmargin}{0in}
+\@openbib@code
+\usecounter{enumiv}%
+\let\p@enumiv\@empty
+\renewcommand\theenumiv{\@arabic\c@enumiv}}%
+ \sloppy
+ \clubpenalty4000
+ \@clubpenalty\clubpenalty
+\widowpenalty4000%
+\sfcode`\.\@m
+ }{%
+\def\@noitemerr
+ {\@latex@warning{Empty `thebibliography' environment}}%
+  \endlist \vskip.2in}
 %%======================各种自定义标签=======================
 %% labels in the summary
 \def\bit@label@summary{结论}
@@ -520,7 +572,7 @@ footskip=0.7cm% 页脚 1.8cm %
 %% labels in the publications
 %%
 \def\bit@label@publications{攻读学位期间发表的论文与研究成果清单}
-
+\def\bit@bib@name{参考文献}
 %% labels in the thanks
 %%
 \def\bit@label@thanks{致谢}
@@ -579,6 +631,9 @@ footskip=0.7cm% 页脚 1.8cm %
 %%=========================载入其他常用宏包=========================================
 \RequirePackage{booktabs}
 \RequirePackage{longtable}
+\RequirePackage[version=4]{mhchem}
+\RequirePackage{siunitx}
+\RequirePackage{upgreek}
 %\bibliographystyle{GBT7714-2005NLang}
 \endinput
 %%
