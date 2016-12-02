@@ -1,13 +1,8 @@
 
-\documentclass[oneside,master,cs4size]{BITthesis}
-%\usepackage[numbers,sort&compress]{natbib}
-%\usepackage{unicode-math}
-%\setmainfont{XITS}
-%\setmathfont{XITS Math}
-%\usepackage{appendix}
-%\usepackage{stix}
+\documentclass[oneside,master]{BITthesis}
 
-\bibliographystyle{GBT7714-2005NLang}
+
+\bibliographystyle{gbt-7714-2015-numerical}
 \zhtitle{jhhhhh金合欢花尼特性研究}
 \entitle{eeee lslsop sklssk sssj}
 \zhauthor{啦啦啦}
@@ -62,24 +57,8 @@
 % 参考文献
 % 使用 BibTeX
 % 包含参考文献文件.bib
-{
-	\zihao{5}
-	\nocite{*}
-	\clearpage
-	\phantomsection
-	\addcontentsline{toc}{chapter}{参考文献} %向目录中添加条目，以章的名义
-	\bibliography{reference/chap1,reference/chap2,reference/bibtex_database}
-
-}
-
-\makeatletter
-%%   插图索引
-%%  \listoffigures
-%%   表格索引
-%%  \listoftables
-%%   公式索引
-%%  \listofequations
-\makeatother
+\bibliography{reference/chap1,reference/chap2,reference/bibtex_database}
+%附录
 \begin{appendix}
 	
 \addcontentsline{toc}{chapter}{附录}
