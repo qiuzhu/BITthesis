@@ -260,9 +260,9 @@ footskip=0.7cm% 页脚 1.8cm %
   }
   \ctexset{section={
 	format={\raggedright \bfseries \heiti \zihao{4}},
-	%beforeskip=19bp,
-	%afterskip=19bp,
-%	fixskip = true,
+	beforeskip=28bp
+	afterskip=14p,
+	fixskip = true,
 	}
 }
 % ==========设置二节标题格式========================================
@@ -270,17 +270,17 @@ footskip=0.7cm% 页脚 1.8cm %
 %黑体小四加粗顶左，单倍行距，序号与题目间空一个汉字符
 \ctexset{subsection={
    format={\bfseries \heiti \raggedright \zihao{-4}},
-  % beforeskip=19bp,
-   % afterskip=19bp,
-   %fixskip = true,
+  beforeskip=24p,
+  afterskip=12bp,
+  fixskip = true,
 	}
 }
 % 设置三节标题格式：黑体小四居左书写，单倍行距，序号与题目间空一个汉字符
 \ctexset{subsubsection={
       format={\heiti \raggedright \zihao{-4}},
-   %   beforeskip=19bp,
-    %  afterskip=19bp,
-   % fixskip = true,
+    beforeskip=24p,
+      afterskip=12p,
+    fixskip = true,
 	}
 }
 
