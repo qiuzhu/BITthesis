@@ -1,75 +1,76 @@
 
 \documentclass[oneside,master]{BITthesis}
 
-\usepackage[numbers,square,comma,super,sort&compress]{natbib}
-\bibliographystyle{gbt-7714-2015-numerical}
-\zhtitle{jhhhhh金合欢花尼特性研究}
-\entitle{eeee lslsop sklssk sssj}
-\zhauthor{啦啦啦}
-\enauthor{llopojuiu}
-\zhadvisor{买买买}
-\enadvisor{Xie Kan}
-\zhchairman{哈哈哈哈教授}
-\enchairman{哈哈哈}
+%% openany,|openright,可选，双面打印时每章的第一页仅右页开启，默认右页开启(openright)
+%% oneside|twoside ,可选，默认开启oneside
+%% master|doctor，必需，博士采用doctor选项，默认选项master为硕士
+
+%%-----------可以加载自己需要的包，绝大部分包在源程序中已经添加-------------
+%%-----------以下是封面的填入栏目，按照格式填入即可================
+
+\zhtitle{BITthesis 研究生论文模板说明和一些使用技巧}
+\entitle{BITthesis manual and some tips about \LaTeXe{}}
+\zhauthor{北理联盟}
+\enauthor{lotus}
+\zhadvisor{***}
+\enadvisor{David}
+\zhchairman{哈教授}
+\enchairman{Dr.Wanfg}
 \zhdegree{工程硕士}
 \endegree{Master of Engineering}
-\zhdate{2016年10月9号}
-\endate{ 2016}
-\zhacademy{哈哈哈}
+\zhdate{2017年7月7号}
+\endate{2017}
+\zhacademy{宇航学院}
 \enacademy{Aerospace Engineering}
-\zhmajor{哈哈哈}
+\zhmajor{航空宇航科学与技术}
+\enmajor{Aerospce tecnology}
 \zhschool{北京理工大学}
 \enschool{Beijing Institute of Technology}
 \classified{TQ028.1}
 \udc{540}
-%\secret{公开}
 
-\providecommand{\cs}{\relax}
-\renewcommand{\cs}[1]{\textbackslash#1}
 
 \begin{document}
-\makecover
-
-
+	
+\makecover     %%% 封面部分
 
 \input{chapters/abstract}
+%% 符号对照表，可选，如不用可注释掉
 \input{chapters/denotation}
 \tableofcontents
+%% 插图索引，可选，如不用可注释掉
+\listoffigures
 
-\mainmatter
+\mainmatter  %%% 主体部分(绪论开始，结论为止)
+%%======================================================================%%
+%* 子文件的多少和内容由你决定（最好以章为单位），基本原则是提速预览、脉络清晰、管理容易。
+%%======================================================================%%
 
 
-
-\input{chapters/chapter1}
-\input{chapters/chapter2}
+\input{chapters/chapter1}  %%第一章内容
+\input{chapters/chapter2}  %%第二章内容
 \include{chapters/summary} %% 全文总结
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% 附录(章节编号重新计算，使用字母进行编号)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% 文后(无章节编号)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% 参考文献
-% 使用 BibTeX
-% 包含参考文献文件.bib
+%%==============参考文献===================%%
+%%==== 使用 BibTeX 编译========
+% 注意：至少需要引用一篇参考文献，否则下面两行会引起编译错误
+\nocite{*} %此处为测试，可以屏蔽掉
+\bibliographystyle{gbt-7714-2015-numerical}  %此处或者更新2005.bst样式
 \bibliography{reference/chap1,reference/chap2,reference/bibtex_database}
-%附录
+
+%%============附录部分===========
+
 \begin{appendix}
-	
 \addcontentsline{toc}{chapter}{附录}
-% 附录中编号形式是"A-1"的样子
-\renewcommand\theequation{\Alph{chapter}--\arabic{equation}}
+\renewcommand\theequation{\Alph{chapter}--\arabic{equation}}  % 附录中编号形式是"A-1"的样子
 \renewcommand\thefigure{\Alph{chapter}--\arabic{figure}}
 \renewcommand\thetable{\Alph{chapter}--\arabic{table}}
-\include{chapters/app1} % 更新记录
-\include{chapters/app2} % 麦克斯韦方程
 
+\include{chapters/app1} % 此处为附录A，自己添加内容
+\include{chapters/app2} % 此处为附录A，自己添加内容
 \end{appendix}
+
 % 发表文章目录
 \backmatter
 \include{chapters/pub}
