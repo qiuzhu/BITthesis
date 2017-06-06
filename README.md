@@ -3,7 +3,7 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 
 北京理工大学LaTeX研究生论文模板
 
-[![GitHub release](https://img.shields.io/github/release/nanmu42/cquthesis.svg?label=Github)]()
+[![GitHub release](https://github.com/qiuzhu/BITthesis/tree/1.0label=Github)]()
 ![logo](https://github.com/qiuzhu/BITthesis/blob/master/bitlatex.png)
 
 # 简介
