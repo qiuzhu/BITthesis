@@ -4,6 +4,8 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 北京理工大学LaTeX研究生论文模板
 
 [![GitHub release](https://img.shields.io/github/release/nanmu42/cquthesis.svg?label=Github)]()
+![logo](https://github.com/qiuzhu/BITthesis/blob/master/bitlatex.png)
+
 # 简介
 
 * [什么是LaTeX？](http://baike.baidu.com/link?url=hM-s1PsjuKHD_k_MpAaI5ZgwwrMtbs8mcrlxSemL2DBcxarGaGt5LWCdPbNBjLtFHHqV9z_EBe1YgNaw-bRVE_)和 [维基百科](https://en.wikibooks.org/wiki/LaTeX)
