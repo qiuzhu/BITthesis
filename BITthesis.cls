@@ -20,58 +20,16 @@
 %%
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \ProvidesClass{BITthesis}
-    [2016/08/21 v0.0.2 bit Thesis Template]
-%\RequirePackage{kvoptions}
-%%%=======声明选项：bit@opt 用于设置论文类型及打印方式===========================
-%\SetupKeyvalOptions{family=bit@opt,prefix=bit@opt@,setkeys=\kvsetkeys}
-%%\DeclareBoolOption[false]{bachelor}
-%\DeclareBoolOption[false]{master}
-%\DeclareBoolOption[false]{doctor}
-%\DeclareBoolOption[false]{pdf}
-%\DeclareComplementaryOption{print}{pdf}
-%%%============bit@page 用于设置文档分页样式====================================
-%\SetupKeyvalOptions{family=bit@pae,prefix=bit@page@,setkeys=\kvsetkeys}
-%\DeclareBoolOption[false]{oneside}
-%\DeclareComplementaryOption{twoside}{oneside}
-%\DeclareBoolOption[false]{openany}
-%\DeclareComplementaryOption{openright}{openany}
-%%\DeclareBoolOption[true]{pageouter}
-%%\DeclareComplementaryOption{pagecenter}{pageouter}
-%\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
-%
-%%%===================处理bit@opt 选项，判断论文类型，若没指定默认使用硕士研究生论文模板
-%\ProcessKeyvalOptions{bit@opt}
-%  \ifbit@opt@doctor\relax\else
-%    \bit@opt@mastertrue
-%  \fi
-%%================================
-%
-%%\ifbit@opt@pdf
-%    %\bit@page@onesidetrue
-%   % \bit@page@pageouterfalse
-%%\fi
-%%%%==================将选项交给ctexbook 处理=======================================
-%\ifbit@page@openany
-%    \PassOptionsToClass{openany}{ctexbook}
-%\fi
-%\ifbit@page@oneside
-%    \PassOptionsToClass{oneside}{ctexbook}
-%\fi
+    [2017/06/06 v1.0 bit Thesis Template]
 %%%========================载入ctexbook 文档类，并设置纸张大小、编码格式及字号===================
-%\LoadClass[a4paper, UTF8]{ctexbook}
 \def\BITthesis{\textsc{BIT}\textsc{thesis}}
-%%\def\version{0.1.2b}
 \newif\ifbit@master\bit@masterfalse
 \newif\ifbit@doctor\bit@doctorfalse
 \newif\ifbit@istwoside\bit@istwosidefalse
-
 \DeclareOption{twoside}{\bit@istwosidetrue}
 \DeclareOption{master}{\bit@mastertrue}
 \DeclareOption{doctor}{\bit@doctortrue}
-
 \DeclareOption*{\PackageWarning{BITthesis}{Unknown Option '\CurrentOption'}}
-%% 将选项传递给 ctexbook 类
-%% 用户至少要提供一个选项：指定论文类型。
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
 \ifbit@istwoside
@@ -100,8 +58,7 @@
 \RequirePackage{float}
 %\RequirePackage[shortlabels,inline]{enumitem}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
-\RequirePackage[numbers,square,comma,super,sort&compress]{natbib}
-%==============删除默认模板（book.cls ）在章之间引入的垂直间隔。要放在hyperref 之前才会生效。===============
+%========删除默认模板（book.cls ）在章之间引入的垂直间隔。要放在hyperref 之前才会生效。===============
 \patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{} % lof
 \patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{} % lot
 \RequirePackage[hyperfootnotes=false,]{hyperref}
@@ -123,7 +80,6 @@
 \setmainfont{Times New Roman}
 \setsansfont{Arial}
 \setmonofont{Courier New}
-%\newCJKfontfamily{\hwxk}{STXingkai}
 \providecommand{\cs}{\relax}
 \renewcommand{\cs}[1]{\textbackslash#1}
 %%=====================生成整数倍汉字宽度的空格，默认为1================================
@@ -162,7 +118,6 @@
 \bit@define@term{udc}                      % UDC编号
 \bit@define@term{secret}                   % 密级
 %%==============引用geometry 宏包设置纸张和页面========================
-%\RequirePackage[top=35mm,headheight=10mm,footskip=7mm,bottom=25mm,left=27mm,right=27mm,paper=a4paper]{geometry} %设置版面:上3.5cm，下2.5cm，左2.7cm，右2.7cm，页眉2.5cm，页脚1.8cm，装订线0cm
 \usepackage[%
 paper=a4paper,%
 top=3.5cm,% 上 3.5cm %
@@ -176,21 +131,14 @@ footskip=0.7cm% 页脚 1.8cm %
 \newcommand{\me}{\mathrm{e}} %定义 对数常数e，虚数符号i,j以及微分算子d为直立体。
 \newcommand{\mi}{\mathrm{i}}
 \newcommand{\mj}{\mathrm{j}}
-\newcommand{\dif}{\mathrm{d}}
-%%=====================使用titlesec 宏包设置页眉页脚==========================
-%\RequirePackage[pagestyles]{titlesec}
-
 %%===================页眉标题宏============================
-%\ifbit@opt@doctor
 \ifbit@doctor
 \newcommand{\bit@zh@thesis@name}{北京理工大学博士学位论文}
-%\newcommand{\bit@en@thesis@name}{BIT}
 \else
 \newcommand{\bit@zh@thesis@name}{北京理工大学硕士学位论文}
-%\newcommand{\bit@en@thesis@name}{BIT}
 \fi
 \newcommand{\bit@header@title}{\bit@zh@thesis@name}
-%==================页眉字号=================
+%==================页眉字号==================================
 \newcommand{\bit@header@size}{\zihao{5}}
 %================页眉页脚字体=============
 \newcommand{\bit@header@font}{\songti}
@@ -245,50 +193,41 @@ footskip=0.7cm% 页脚 1.8cm %
     \node at (char.center) {\makebox[0pt][c]{#2}};}}
 \robustify{\circled}
 %%===================设置全文行距及段落行距==========================
-%\setlength{\baselineskip}{22bp}
 \RequirePackage{setspace}
-\setstretch{1.52}
+%\setstretch{1.52}
 %%============================设置标题格式=================================================
-\ctexset{chapter/name={第,章},
-  chapter/number={\arabic{chapter}},
-  chapter/format={\bfseries \heiti \centering \zihao{3}},
-  %aftername={\quad{}} %章序号与章名间空一个汉字符
-  chapter/pagestyle ={bit@headings},
-  chapter/beforeskip={10bp},
-  chapter/afterskip={22bp},
-%  fixskip = true,
+\ctexset{chapter={
+      name = {第,章},
+      number = {\arabic{chapter}},
+      format = {\bfseries \heiti \centering \zihao{3}},
+      pagestyle ={bit@headings},
+      beforeskip = 10bp,
+      afterskip = 22bp,
+      fixskip = true,
   }
+}
   \ctexset{section={
-	format={\raggedright \bfseries \heiti \zihao{4}},
-	beforeskip=28bp
-	afterskip=14p,
-	fixskip = true,
+	    format={\raggedright \bfseries \heiti \zihao{4}},
+	    beforeskip = 28bp,
+	    afterskip = 14bp,
+	    fixskip = true,
 	}
 }
-% ==========设置二节标题格式========================================
-
-%黑体小四加粗顶左，单倍行距，序号与题目间空一个汉字符
 \ctexset{subsection={
-   format={\bfseries \heiti \raggedright \zihao{-4}},
-  beforeskip=24p,
-  afterskip=12bp,
-  fixskip = true,
+      format={\bfseries \heiti \raggedright \zihao{-4}},
+      beforeskip=24p,
+      afterskip=12bp,
+      fixskip = true,
 	}
 }
 % 设置三节标题格式：黑体小四居左书写，单倍行距，序号与题目间空一个汉字符
 \ctexset{subsubsection={
       format={\heiti \raggedright \zihao{-4}},
-    beforeskip=24p,
+      beforeskip=24p,
       afterskip=12p,
-    fixskip = true,
+      fixskip = true,
 	}
 }
-
-%%==========================竖排书脊=================================================还没想好方法
-
-%\NewDocumentCommand{\shuji}{O{\bit@ctitle} O{\thu@cauthor}}{%
-  %\newpage\thispagestyle{empty}\heiti\zihao{3}\ziju{0.4}%
-  %\noindent\hfill\rotatebox[origin=lt]{-90}{\makebox[\textheight]{#1\hfill#2}}}
 
 %%==================添加目录索引====================
 \newcommand{\bit@pdf@contentsname}{目录}
@@ -391,14 +330,14 @@ footskip=0.7cm% 页脚 1.8cm %
 
     {\zihao{-3}\heiti
     \begin{tabular}{l p{1mm} c}
-      {作\,者\,姓\,名：} & & \bit@underline[150pt]{\bit@zhauthor}    \\
-      {学\, 院 \,名\,称：} & &\bit@underline[150pt]{\bit@zhacademy}      \\
-      {指 \,导 \,教 \,师：} & & \bit@underline[150pt]{\bit@zhadvisor}   \\
-      {答辩委员会主席：} & & \bit@underline[150pt]{\bit@zhchairman}   \\
-      {申\, 请 \,学 \,位:} & & \bit@underline[150pt]{\bit@zhdegree}   \\
-      {学\,科\,专\,业 ：} & & \bit@underline[150pt]{\bit@zhmajor }  \\
-      {学位授予单位 ：} & & \bit@underline[150pt]\bit@zhschool    \\
-      {论文答辩日期：} & & \bit@underline[150pt]{\bit@zhdate}      \\
+      {作\,者\,姓\,名：} & & \bit@underline[170pt]{\bit@zhauthor}    \\
+      {学\, 院 \,名\,称：} & &\bit@underline[170pt]{\bit@zhacademy}      \\
+      {指 \,导 \,教 \,师：} & & \bit@underline[170pt]{\bit@zhadvisor}   \\
+      {答辩委员会主席：} & & \bit@underline[170pt]{\bit@zhchairman}   \\
+      {申\, 请 \,学 \,位:} & & \bit@underline[170pt]{\bit@zhdegree}   \\
+      {学\,科\,专\,业 ：} & & \bit@underline[170pt]{\bit@zhmajor }  \\
+      {学位授予单位 ：} & & \bit@underline[170pt]\bit@zhschool    \\
+      {论文答辩日期：} & & \bit@underline[170pt]{\bit@zhdate}      \\
     \end{tabular}}
   \end{center}
   \vskip \stretch{0.5}
@@ -416,14 +355,14 @@ footskip=0.7cm% 页脚 1.8cm %
     \vskip 5cm
     \zihao{-3}
     \begin{tabular}{lc}
-     {Candidate Name：}                & \bit@underline[150pt]{\bit@enauthor}    \\
-     {School or Department:}            &  \bit@underline[150pt]{\bit@enacademy}      \\
-     {Faculty Mentor:}                  & \bit@underline[150pt]{\bit@enadvisor}    \\
-    {Chair, Thesis Committee：}         & \bit@underline[150pt]{\bit@enchairman}    \\
-     {Degree Applied:  }               & \bit@underline[150pt]\bit@endegree    \\
-     {Major：}                         & \bit@underline[150pt]{\bit@enmajor }  \\
-     {Degree by:}      				 & \bit@underline[150pt]{\bit@enschool}    \\
-    {The Date of Defence：}          & \bit@underline[150pt]{\bit@endate }      \\
+     {Candidate Name：}                 & \bit@underline[180pt]{\bit@enauthor}     \\
+     {School or Department:}            & \bit@underline[180pt]{\bit@enacademy}    \\
+     {Faculty Mentor:}                  & \bit@underline[180pt]{\bit@enadvisor}    \\
+    {Chair, Thesis Committee：}         & \bit@underline[180pt]{\bit@enchairman}   \\
+     {Degree Applied:  }                & \bit@underline[180pt]{\bit@endegree}     \\
+     {Major：}                          & \bit@underline[180pt]{\bit@enmajor }     \\
+     {Degree by:}      				          & \bit@underline[180pt]{\bit@enschool}     \\
+    {The Date of Defence：}             & \bit@underline[180pt]{\bit@endate }       \\
     \end{tabular}
 
   \end{titlepage}
@@ -441,10 +380,10 @@ footskip=0.7cm% 页脚 1.8cm %
 	\vspace*{4mm}
 	\begin{center}
 		{
-				\setstretch{0.8}
+				\setstretch{1.1}
 				\begin{minipage}{1em}
 				      {\heiti\zihao{3}\bit@zhtitle}
-					\vskip 20mm
+					        \vskip 20mm
 				      {\heiti\zihao{3}\bit@zhschool}
 				\end{minipage}
 		}
@@ -456,23 +395,18 @@ footskip=0.7cm% 页脚 1.8cm %
 	\fi
 
 }
-%====================== 摘要==============================================================
+%====================== 摘要==========================================
 \newenvironment{zhabstract}{
     \chapter[摘要]{摘要}
-    \
   }{}
+	
   \newenvironment{enabstract}{
     \chapter[Abstract]{Abstract}
-   % \fontsize{12bp}{20bp}\selectfont
-  % \setstretch{1.39}
   \linespread{1.39}\selectfont
   }{}
 
-
  \newcommand{\zhkeywords}[1]{%
    \vspace{2ex}\noindent{\heiti \zihao{5} 关键词：} {\zihao{5}#1}}
-
-
   \newcommand{\enkeywords}[2][]{
     \par\phantom{keywords}\par\noindent
     {
@@ -480,7 +414,6 @@ footskip=0.7cm% 页脚 1.8cm %
     }
   }
 %%===========================设置图表标题选项==========================
-\RequirePackage{amsmath}
 \RequirePackage{caption}
 \DeclareCaptionLabelSeparator{zhspace}{\hspace{1\ccwd}}
 \DeclareCaptionFont{fontsize}{\zihao{5}}
@@ -503,32 +436,13 @@ footskip=0.7cm% 页脚 1.8cm %
 \graphicspath{{./}{figures/}}
 \numberwithin{figure}{chapter}
 \renewcommand{\thefigure}{\thechapter.\arabic{figure}}
-%===========让浮动对象缺省值更宽松=================
+%==============================让浮动对象缺省值更宽松================================
 \renewcommand{\textfraction}{0.15}
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\bottomfraction}{0.65}
 \renewcommand{\floatpagefraction}{0.60}
 
 %===========================================参考文献======================================
-%\renewenvironment{thebibliography}[1]
-%  {\chapter{\bibname}%
-%   \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
-%   \list{\@biblabel{\@arabic\c@enumiv}}%
-%          {\settowidth\labelwidth{\@biblabel{#1}}%
-%        \leftmargin\labelwidth
-%           \advance\leftmargin\labelsep
-%         \@openbib@code
-%          \usecounter{enumiv}%
-%          \let\p@enumiv\@empty
-%         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-%   \sloppy
-%     \clubpenalty4000
-%    \@clubpenalty \clubpenalty
-%     \widowpenalty4000%
-%    \sfcode`\.\@m}
-%    {\def\@noitemerr
-%     {\@latex@warning{Empty `thebibliography' environment}}%
-%  \endlist}
 \pretocmd{\bibliography}{%
 \clearpage\phantomsection\addcontentsline{toc}{chapter}{\bit@bib@name}}{}{}
 %==参考文献使用五号字，同时优化参考文献占用的空间
@@ -563,22 +477,14 @@ footskip=0.7cm% 页脚 1.8cm %
 \def\@noitemerr
  {\@latex@warning{Empty `thebibliography' environment}}%
   \endlist \vskip.2in}
-%%======================各种自定义标签=======================
-%% labels in the summary
+%%========================================各种自定义标签==========================
 \def\bit@label@summary{结论}
-
-%%
-%% labels in the publications
-%%
 \def\bit@label@publications{攻读学位期间发表的论文与研究成果清单}
 \def\bit@bib@name{参考文献}
-%% labels in the thanks
-%%
 \def\bit@label@thanks{致谢}
-%==========自定义环境定义=============================
-%%===================================================%%
+%==========================自定义环境定义=========================================
 \addtocontents{toc}{\let\string\CTEX@spaceChar\relax}
-%==============论文成果发表页==================================
+%=============================论文成果发表页=======================================
 \newenvironment{publications}[1]
      {\chapter{\bit@label@publications}%
       \@mkboth{\MakeUppercase\bit@label@publications}
@@ -600,13 +506,13 @@ footskip=0.7cm% 页脚 1.8cm %
      {\def\@noitemerr
        {\@latex@warning{Empty `publications' environment}}%
       \endlist}
-%===================致谢=========================
+%===============================致谢==================================
 \renewenvironment{thanks}
   {\chapter{\bit@label@thanks}\label{last}
   \fangsong
   }
   {}
-%===============总结====================================
+%==============================总结====================================
 \newenvironment{summary}
 {\chapter*{\bit@label@summary\markboth{\bit@label@summary}{}}\addcontentsline{toc}{chapter}{\bit@label@summary}
 }{}
@@ -632,8 +538,6 @@ footskip=0.7cm% 页脚 1.8cm %
 \RequirePackage{longtable}
 \RequirePackage[version=4]{mhchem}
 \RequirePackage{siunitx}
-\RequirePackage{upgreek}
-%\bibliographystyle{GBT7714-2005NLang}
 \endinput
 %%
 %% End of file `bitthesis.cls'.
