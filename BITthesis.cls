@@ -435,19 +435,18 @@ footskip=0.7cm% 页脚 1.8cm %
 % |论文题目与“北京理工大学”间距2cm；
 % |论文题目距上边界、“北京理工大学”距下边界均为5cm。 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand \makeVerticalTitle{
+\newcommand{\makeVerticalTitle}{
 	\cleardoublepage
 	\thispagestyle{empty}
 	\vspace*{4mm}
 	\begin{center}
 		{
-			\heiti\zihao{3}
-			%\setstretch{0.8}
-			\begin{minipage}{1.9em}
-				\bit@zhtitle
-				\vskip 20mm
-				\bit@zhschool
-			\end{minipage}
+				\setstretch{0.8}
+				\begin{minipage}{1em}
+				      {\heiti\zihao{3}\bit@zhtitle}
+					\vskip 20mm
+				      {\heiti\zihao{3}\bit@zhschool}
+				\end{minipage}
 		}
 	\end{center}
 	\clearpage
