@@ -25,7 +25,8 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 # 用法
 - 详见`Wiki`，目前正在编写中，可以持续关注。或者会LaTeX的同学可以先下载来琢磨一下；
 - 模板自带一些说明，替换掉相应的文字即可。
-
+# 下载
+[发布版](https://github.com/qiuzhu/BITthesis/releases)
 # 捐赠
 #### 基本上而言，面对数千行代码要一个个修改是一件很枯燥的事情，所以这里有个捐赠二维码。
 ![捐赠](https://github.com/qiuzhu/BITthesis/blob/master/m.png)
