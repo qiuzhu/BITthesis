@@ -5,11 +5,9 @@
 %% oneside|twoside ,可选，默认开启oneside
 %% master|doctor，必需，博士采用doctor选项，默认选项master为硕士
 
-%%-----------可以加载自己需要的包，绝大部分包在源程序中已经添加-------------
-
-\usepackage{dirtree}
-\newcommand\myicon[1]{{\color{#1}\rule{2ex}{2ex}}}
-\newcommand{\myfolder}[2]{\myicon{#1}\ {#2}}
+% 请在bitthesisextra.sty文件中定义其他会用到的宏包和自己的变量
+% 这样可以防止main.tex太过臃肿。
+\usepackage{bitthesisextra}
 
 %%-----------以下是封面的填入栏目，按照格式填入即可================
 
@@ -36,7 +34,7 @@
 
 
 \begin{document}
-	
+
 \makecover     %%% 封面部分
 
 \input{chapters/abstract}
@@ -52,8 +50,10 @@
 %%======================================================================%%
 
 
-\input{chapters/chapter1}  %%第一章内容
-\input{chapters/chapter2}  %%第二章内容
+\include{chapters/chapter1}  %%第一章内容
+\include{chapters/chapter2}  %%第二章内容
+\include{chapters/chapter3}
+\include{chapters/chapter4}
 \include{chapters/summary} %% 全文总结
 
 
@@ -61,8 +61,8 @@
 %%==== 使用 BibTeX 编译========
 % 注意：至少需要引用一篇参考文献，否则下面两行会引起编译错误
 \nocite{*} %此处为测试，可以屏蔽掉
-\bibliographystyle{gbt-7714-2015-numerical}  %此处或者更新2005.bst样式
-\bibliography{reference/test,reference/contents}
+\bibliographystyle{gbt-7714-2015-numerical}
+\bibliography{reference/test}
 
 %%============附录部分===========
 
