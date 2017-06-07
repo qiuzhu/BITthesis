@@ -7,7 +7,7 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 [![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg?style=flat-square)](https://raw.githubusercontent.com/qiuzhu/BITthesis/master/LICENSE)
 ![logo](https://github.com/qiuzhu/BITthesis/blob/master/bitlatex.png)
 # 编译方式和环境：
-- 强烈建议采用Texlive 2016、2017或Miketex 的发行版套装，远离Ctex套装
+- 强烈建议采用Texlive 2016、2017或Miktex 的发行版套装，远离Ctex套装
 - XeLatex方式编译，否则不能通过
 - 参考文献建议用jabref或者zotero管理，生成自己的bib文献库
 
