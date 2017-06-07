@@ -52,6 +52,6 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 ## 存在问题
 
 # TODO
--[ ] 理科的各种定理环境
--[ ] 各种list代码的配置
--[ ] 文档手册的编写
+- [ ] 理科的各种定理环境
+- [ ] 各种list代码的配置
+- [ ] 文档手册的编写
