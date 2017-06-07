@@ -34,10 +34,9 @@ The \textbf{words} in this sentences are \textit{processed} with three different
 		\toprule
 		{\heiti 文件名} & {\heiti 描述} \\
 		\midrule
-		cquthesis.cls & 模板类文件\footnote{这是一个脚注}\\
-		cquthesis.cfg & 模板配置文件\footnote{这是又一个脚注}\\
-		cqunumberical.bst & 参考文献 BIB\TeX\ 样式文件。\\
-		cquthesis.sty & 常用的包和命令写在这里，减轻主文件的负担。\footnote{同一页上的脚注最多支持到10个}\\
+		BITthesis.cls & 模板类文件\footnote{这是一个脚注}\\
+		gbt-7714-2015-numerical.bst & 参考文献 BIB\TeX\ 样式文件。\\
+		bitthesisextra.sty & 常用的包和命令写在这里，减轻主文件的负担。\footnote{同一页上的脚注最多支持到10个}\\
 		\bottomrule
 		\end{tabularx}
 	\end{minipage}
@@ -99,7 +98,7 @@ The \textbf{words} in this sentences are \textit{processed} with three different
 
 不可否认 \LaTeX{} 的表格功能没有想象中的那么强大，不过只要足够认真，足够细致，同样可以排出来非常复杂非常漂亮的表格。
 
-\ref{tab:parallel1}和\ref{tab:parallel2}展示了\cs{xuhao}和\cs{xuhao}\texttt{[1]}的使用，可以达到自动编号的效果。不过要记得在每次使用之前使用\cs{resetxuhao}，或者\cs{xuhao}\texttt{[1]}。使用\cs{setxuhao}\oarg{1-6}可以更改序号的标记方式，如\ref{tab:parallel2}所示。详细用法请参阅用户手册。
+\ref{tab:parallel1}和\ref{tab:parallel2}展示了可以达到自动编号的效果。不过要记得在每次使用之前使用，\texttt{[1]}。使用\cs{setxuhao}\oarg{1-6}可以更改序号的标记方式，如\ref{tab:parallel2}所示。详细用法请参阅用户手册。
 
 \begin{longtable}[c]{c*{6}{r}}
 	\caption[实验数据]{实验数据，这个题注是双语的，而且十分的长，注意这在索引中的处理方式}\label{tab:performance}\\
