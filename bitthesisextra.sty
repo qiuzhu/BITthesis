@@ -1,0 +1,97 @@
+\ProvidesPackage{bitthesisextra}[2017/06/09 The place for your beloved packages and customization.]
+
+%=====你可以在这里使用\RequirePackage[包选项]{包名称}导入想用的Package=======
+%=====以及定义你自己的功能和常量=======
+\newcommand{\speakyourlove}[1][Mom]{\emph{#1, I Love You!}} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+%================================
+%**********代码开发区域***********
+\RequirePackage{listings}
+\lstdefinestyle{lstStyleBase}{%
+basicstyle=\small\ttfamily,
+aboveskip=\medskipamount,
+belowskip=\medskipamount,
+lineskip=0pt,
+boxpos=c,
+showlines=false,
+extendedchars=true,
+upquote=true,
+tabsize=2,
+showtabs=false,
+showspaces=false,
+showstringspaces=false,
+numbers=none,
+linewidth=\linewidth,
+xleftmargin=4pt,
+xrightmargin=0pt,
+resetmargins=false,
+breaklines=true,
+breakatwhitespace=false,
+breakindent=0pt,
+breakautoindent=true,
+columns=flexible,
+keepspaces=true,
+gobble=2,
+framesep=3pt,
+rulesep=1pt,
+framerule=1pt,
+backgroundcolor=\color{gray!5},
+stringstyle=\color{green!40!black!100},
+keywordstyle=\bfseries\color{blue!50!black},
+commentstyle=\slshape\color{black!60}}
+
+\lstdefinestyle{lstStyleShell}{%
+style=lstStyleBase,
+frame=l,
+rulecolor=\color{blue},
+language=bash}
+
+\lstdefinestyle{lstStyleLaTeX}{%
+style=lstStyleBase,
+frame=l,
+rulecolor=\color{cyan},
+language=[LaTeX]TeX}
+
+\lstnewenvironment{latex}{\lstset{style=lstStyleLaTeX}}{}
+\lstnewenvironment{shell}{\lstset{style=lstStyleShell}}{}
+
+%================================
+
+% 借用 ltxdoc 里面的几个命令。
+\def\cmd#1{\cs{\expandafter\cmd@to@cs\string#1}}
+\def\cmd@to@cs#1#2{\char\number`#2\relax}
+\DeclareRobustCommand\cs[1]{\texttt{\char`\\#1}}
+\DeclareRobustCommand\csgo[2]{\cs{#1\{#2\}}}
+
+\newcommand*{\meta}[1]{{%
+		\ensuremath{\langle}\rmfamily\itshape#1\/\ensuremath{\rangle}}}
+\providecommand\marg[1]{%
+	{\ttfamily\char`\{}\meta{#1}{\ttfamily\char`\}}}
+\providecommand\oarg[1]{%
+	{\ttfamily[}\meta{#1}{\ttfamily]}}
+\providecommand\parg[1]{%
+	{\ttfamily(}\meta{#1}{\ttfamily)}}
+\providecommand\pkg[1]{{\sffamily#1}}
+
+% 文件夹列表
+\usepackage{dirtree}
+% The following is a dummy icon command
+\newcommand\myicon[1]{{\color{#1}\rule{2ex}{2ex}}}
+% If you have actual icon images, use \includegraphics to include them
+% If you are generating them, put in the appropriate code for them here
+% now we make a command for a folder/file which inserts the icon and its label
+% adjust this as needed. If you only have 2 icons, then you could create
+% a \myfile and \myfolder command with the icon fixed.
+\newcommand{\myfolder}[2]{\myicon{#1}\ {#2}}
