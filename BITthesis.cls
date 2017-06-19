@@ -6,7 +6,7 @@
 %%
 %% bitthesis.dtx  (with options: `class')
 %%
-%% Copyright (C) 2016 by japinli <japinli@hotmail.com>
+%% Copyright (C) 2016 by wweibit@163.com
 %%
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either
@@ -34,13 +34,16 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
 \ifbit@istwoside
-\LoadClass[zihao=-4,a4paper,twoside,openright,fancyhdr,fntef]{ctexbook}
+\LoadClass[zihao=-4,a4paper,twoside,openright,UTF8,space=auto]{ctexbook}
 \else
-\LoadClass[zihao=-4,a4paper,oneside,openany,fancyhdr,fntef]{ctexbook}
+\LoadClass[zihao=-4,a4paper,oneside,openany,UTF8,space=auto]{ctexbook}
 \fi
 
 %%=========================================加载常用宏=========================================
+
+
 %这几个宏包用于提升LATEX 2"的命令定义和命令处理性能
+\RequirePackage{expl3}
 \RequirePackage{etoolbox}
 \RequirePackage{xparse}
 \RequirePackage{calc}
@@ -48,37 +51,24 @@
 \RequirePackage{graphicx}
 \RequirePackage{pdfpages}
 \RequirePackage[shortlabels]{enumitem}
+\setlist{noitemsep}
 \RequirePackage{array}
 \RequirePackage{fontspec}
 \RequirePackage{amsmath,amssymb,amsfonts}
 \RequirePackage[bottom,perpage,hang,symbol*]{footmisc}
-\RequirePackage{subfig}
+\RequirePackage{subfigure}
 \RequirePackage{float}
 \RequirePackage{metalogo}
-\RequirePackage[numbers,square,comma,super,sort&compress]{natbib}
+
 %==============删除默认模板（book.cls ）在章之间引入的垂直间隔。要放在hyperref 之前才会生效。===============
 \patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{} % lof
 \patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{} % lot
-\RequirePackage{hyperref}
-%%======超链接与书签========
-\hypersetup{
-	CJKbookmarks=true,
-	bookmarksopen=true,
-	bookmarksnumbered=true,
-	bookmarksopenlevel=1,
-	pdfborder= 0 0 0,
-	unicode=true,
-	linktoc=all,
-	allcolors=black,
-	colorlinks=true,
-}
 %%============================设置西文字体，中文字体由ctex 自动设置=============================
+%%===========linux系统下需要下载和安装相应的宋体和ms字体=================
 %\setCJKmainfont{SimSun}
-%\setCJKmainfont{Adobe Song Std}
 \setmainfont{Times New Roman}
 \setsansfont{Arial}
 \setmonofont{Courier New}
-%\newCJKfontfamily{\hwxk}{STXingkai}
 \providecommand{\cs}{\relax}
 \renewcommand{\cs}[1]{\textbackslash#1}
 %%=====================生成整数倍汉字宽度的空格，默认为1================================
@@ -115,6 +105,30 @@
 \bit@define@term{classified}               % 中文分类号
 \bit@define@term{udc}                      % UDC编号
 \bit@define@term{secret}                   % 密级
+%%====================超链接与书签===========================
+\RequirePackage{hyperref}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\definecolor{schrift}{RGB}{0,73,114}
+\definecolor{blueRef}{RGB}{12,127,172}
+\definecolor{navyblue}{RGB}{0,0,128}
+\hypersetup{
+	CJKbookmarks=true,
+	bookmarksopen=true,
+	bookmarksnumbered=true,
+	bookmarksopenlevel=1,
+	pdfborder= 0 0 0,
+    pdfauthor = {\bit@zhauthor},
+    pdftitle = {\bit@zhtitle},
+	  unicode=true,
+    backref=true,
+	  linktoc=all,
+	  colorlinks=true,
+    citecolor=navyblue,
+    filecolor=cyan,
+    linkcolor=navyblue,
+    linkbordercolor=navyblue,
+    urlcolor=blue,
+}
 %%==============引用geometry 宏包设置纸张和页面========================
 %\RequirePackage[top=35mm,headheight=10mm,footskip=7mm,bottom=25mm,left=27mm,right=27mm,paper=a4paper]{geometry} %设置版面:上3.5cm，下2.5cm，左2.7cm，右2.7cm，页眉2.5cm，页脚1.8cm，装订线0cm
 \usepackage[%
@@ -156,7 +170,7 @@ footskip=0.7cm% 页脚 1.8cm %
   \renewcommand{\headrulewidth}{0.4pt}
   \renewcommand{\footrulewidth}{0pt}}
 
-%==================================对于openright 选项，必须保证章⾸页右开，且如果前章末页⽆内容须清空其页眉页脚。===================
+%==================================对于openright 选项，必须保证章页右开，且如果前章末页内容须清空其页眉页脚。===================
 \let\bit@cleardoublepage\cleardoublepage
 \newcommand{\bit@clearemptydoublepage}{%
 	\clearpage{\pagestyle{bit@empty}\bit@cleardoublepage}}
@@ -250,6 +264,16 @@ footskip=0.7cm% 页脚 1.8cm %
 \titlecontents{subsection}[4em]{\songti \zihao{-4}}
 {\thecontentslabel\quad}{}
 {\hspace{.5em}\titlerule*{.}\contentspage}
+
+%\textit{\RequirePackage[titles,subfigure]{tocloft}
+%\setlength{\cftbeforechapskip}{1mm}
+%\cftsetindents{chapter}{0em}{1.5em}
+%\cftsetindents{section}{1.5em}{2.2em}
+%\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+%\renewcommand{\cftchapfont}{\zihao{4}\sffamily\heiti}
+%\renewcommand{\cftsecfont}{\zihao{-4}\sffamily\heiti}
+%\renewcommand{\cftsubsecfont}{\zihao{-4}}}
+
 %===================================学位论文独创性声明================================
 \newcommand{\bit@declare@text}{
   本人郑重声明：所提交的学位论文是我本人在指导教师的指导下进行的研究工作获得的研究成果。尽我所知，文中除特别标注和致谢的地方外，学位论文中不包含其他人已经发表或撰写过的研究成果，也不包含为获得北京理工大学或其它教育机构的学位或证书所使用过的材料。与我一同工作的合作者对此研究工作所做的任何贡献均已在学位论文中作了明确的说明并表示了谢意。\par 特此申明。
@@ -422,6 +446,7 @@ footskip=0.7cm% 页脚 1.8cm %
 \DeclareCaptionFont{fontsize}{\zihao{5}}
 \captionsetup{
   font = {fontsize},
+  labelfont={color=navyblue},
   labelsep = zhspace,
 }
 \captionsetup[table]{
@@ -446,6 +471,9 @@ footskip=0.7cm% 页脚 1.8cm %
 \renewcommand{\floatpagefraction}{0.60}
 
 %===========================================参考文献======================================
+
+\RequirePackage[numbers,square,comma,super,sort&compress]{natbib}
+
 \pretocmd{\bibliography}{%
 \clearpage\phantomsection\addcontentsline{toc}{chapter}{\bit@bib@name}}{}{}
 %==参考文献使用五号字，同时优化参考文献占用的空间
@@ -487,7 +515,7 @@ footskip=0.7cm% 页脚 1.8cm %
 \def\bit@label@thanks{致谢}
 %==========自定义环境定义=============================
 %%===================================================%%
-\addtocontents{toc}{\let\string\CTEX@spaceChar\relax}
+%\addtocontents{toc}{\let\string\CTEX@spaceChar\relax}
 %==============论文成果发表页==================================
 \newenvironment{publications}[1]
      {\chapter{\bit@label@publications}%
@@ -540,8 +568,12 @@ footskip=0.7cm% 页脚 1.8cm %
 %%=========================载入其他常用宏包=========================================
 \RequirePackage{booktabs}
 \RequirePackage{longtable}
+\RequirePackage{tabularx}
 \RequirePackage[version=4]{mhchem}
 \RequirePackage{siunitx}
+\RequirePackage{mathtools}
+\newtagform{blue}{\color{navyblue}(}{)}
+\usetagform{blue}
 %\bibliographystyle{GBT7714-2005NLang}
 \endinput
 %%
