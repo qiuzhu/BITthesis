@@ -40,11 +40,13 @@
 \input{chapters/abstract}
 %% 符号对照表，可选，如不用可注释掉
 \input{chapters/denotation}
-\tableofcontents
-%% 插图索引，可选，如不用可注释掉
-\listoffigures
-
-\mainmatter  %%% 主体部分(绪论开始，结论为止)
+{\hypersetup{linkcolor=black}    %%此处设置目录选项的链接为黑色，仅仅影响本地此刻的范围
+    \tableofcontents
+%% 插图、表格索引，可选，如不用可注释掉
+    \listoffigures
+    \listoftables
+}
+\mainmatter  %%% 主体部分(绪论开始，结论为止)
 %%======================================================================%%
 %* 子文件的多少和内容由你决定（最好以章为单位），基本原则是提速预览、脉络清晰、管理容易。
 %%======================================================================%%
