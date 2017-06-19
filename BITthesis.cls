@@ -473,7 +473,7 @@ footskip=0.7cm% 页脚 1.8cm %
 %===========================================参考文献======================================
 
 \RequirePackage[numbers,square,comma,super,sort&compress]{natbib}
-
+\bibpunct{\color{navyblue}[}{\color{navyblue}]}{,}{s}{}{,}
 \pretocmd{\bibliography}{%
 \clearpage\phantomsection\addcontentsline{toc}{chapter}{\bit@bib@name}}{}{}
 %==参考文献使用五号字，同时优化参考文献占用的空间
@@ -572,6 +572,7 @@ footskip=0.7cm% 页脚 1.8cm %
 \RequirePackage[version=4]{mhchem}
 \RequirePackage{siunitx}
 \RequirePackage{mathtools}
+\RequirePackage{doi}
 \newtagform{blue}{\color{navyblue}(}{)}
 \usetagform{blue}
 %\bibliographystyle{GBT7714-2005NLang}
