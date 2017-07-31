@@ -13,6 +13,7 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 - `XeLatex`方式编译，否则不能通过！
 - 强烈推荐`Texstudio`这个编辑器，非常好用；
 - 参考文献建议用`jabref`或者`zotero`管理，生成自己的bib文献库，[!参考文章](http://www.360doc.com/content/14/0303/11/176942_357295803.shtml)
+
 在`Linux`系统上：
 - 其他如同`Windows`
 - 注意字体问题，在`Ubuntu`下，由于版权问题，未能预装宋体等`Windows`下的字体，具体安装方法见百度
