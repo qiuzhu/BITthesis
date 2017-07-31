@@ -6,6 +6,7 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 [![GitHub stars](https://img.shields.io/github/stars/qiuzhu/BITthesis.svg?style=flat-square)](https://github.com/qiuzhu/BITthesis/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg?style=flat-square)](https://raw.githubusercontent.com/qiuzhu/BITthesis/master/LICENSE)
 ![logo](https://github.com/qiuzhu/BITthesis/blob/master/bitlatex.png)
+------------------------------------------------------------------------
 # 编译方式和环境：
 在`Windows`下：
 - 强烈建议采用`Texlive 2016`、`2017`或`Miktex` 的发行版套装，利用自带工具，更新宏包到最新，强烈建议到[!清华大学镜像站](https://mirrors.tuna.tsinghua.edu.cn)下载套装，并且更新，这样速度最快；
@@ -24,7 +25,8 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
   ### 然后会提示微软的用户协议向导,单击“确定OK”继续
   ### 在安装字体后，我们需要使用命令来更新字体缓存：
   sudo fc-cache -f -v
-  ```  
+  ```
+  -------------------------------------------------------------------
 # 简介
 
 * [什么是LaTeX？](http://baike.baidu.com/link?url=hM-s1PsjuKHD_k_MpAaI5ZgwwrMtbs8mcrlxSemL2DBcxarGaGt5LWCdPbNBjLtFHHqV9z_EBe1YgNaw-bRVE_)和 [维基百科](https://en.wikibooks.org/wiki/LaTeX)
