@@ -7,10 +7,22 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 [![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg?style=flat-square)](https://raw.githubusercontent.com/qiuzhu/BITthesis/master/LICENSE)
 ![logo](https://github.com/qiuzhu/BITthesis/blob/master/bitlatex.png)
 # 编译方式和环境：
-- 强烈建议采用Texlive 2016、2017或Miktex 的发行版套装，远离Ctex套装
-- XeLatex方式编译，否则不能通过
-- 参考文献建议用jabref或者zotero管理，生成自己的bib文献库
-
+- 在`Windows`下：
+  - 强烈建议采用`Texlive 2016`、`2017`或`Miktex` 的发行版套装，利用自带工具，更新宏包到最新，强烈建议到[!清华大学镜像站](https://mirrors.tuna.tsinghua.edu.cn)下载套装，并且更新，这样速度最快；
+  - 最新远离`Ctex`套装，千万不要用，已经过时，不能编译通过！！！
+  - `XeLatex`方式编译，否则不能通过！
+  - 强烈推荐`Texstudio`这个编辑器，非常好用；
+  - 参考文献建议用`jabref`或者`zotero`管理，生成自己的bib文献库，[!参考文章](http://www.360doc.com/content/14/0303/11/176942_357295803.shtml)
+- 在`Linux`系统上：
+  - 其他如同`Windows`
+  - 注意字体问题，在`Ubuntu`下，由于版权问题，未能预装宋体等`Windows`下的字体，具体安装方法见百度
+  - Linux下因为版权的问题, 微软的这些字体不会自动安装,需要我们手动安装方法如下
+  ```
+  sudo apt-get install ttf-mscorefonts-installer 
+  ### 然后会提示微软的用户协议向导,单击“确定OK”继续
+  ### 在安装字体后，我们需要使用命令来更新字体缓存：
+  sudo fc-cache -f -v
+  ```
 # 简介
 
 * [什么是LaTeX？](http://baike.baidu.com/link?url=hM-s1PsjuKHD_k_MpAaI5ZgwwrMtbs8mcrlxSemL2DBcxarGaGt5LWCdPbNBjLtFHHqV9z_EBe1YgNaw-bRVE_)和 [维基百科](https://en.wikibooks.org/wiki/LaTeX)
@@ -53,5 +65,5 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 
 # TODO
 - [ ] 理科的各种定理环境
-- [ ] 各种list代码的配置
-- [ ] 文档手册的编写
+- [X] 各种list代码的配置
+- [X] 文档手册的编写
