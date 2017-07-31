@@ -20,12 +20,12 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 - 注意字体问题，在`Ubuntu`下，由于版权问题，未能预装宋体等`Windows`下的字体，具体安装方法见百度
 - Linux下因为版权的问题, 微软的这些字体不会自动安装,需要我们手动安装方法如下:
 
-  1.sudo apt-get install ttf-mscorefonts-installer 
+        1.sudo apt-get install ttf-mscorefonts-installer 
   
         然后会提示微软的用户协议向导,单击“确定OK”继续
   
        在安装字体后，我们需要使用命令来更新字体缓存：
-  2.sudo fc-cache -f -v
+       2.sudo fc-cache -f -v
 
   -------------------------------------------------------------------
 # 简介
