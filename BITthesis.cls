@@ -447,43 +447,51 @@ footskip=0.7cm% 页脚 1.8cm %
 \renewcommand{\floatpagefraction}{0.60}
 
 %===========================================参考文献======================================
-
-\RequirePackage[numbers,square,comma,super,sort&compress]{natbib}
-\bibpunct{\color{navyblue}[}{\color{navyblue}]}{,}{s}{}{,}
-\pretocmd{\bibliography}{%
-\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bit@bib@name}}{}{}
-%==参考文献使用五号字，同时优化参考文献占用的空间
-\AtBeginDocument{%
-	\pretocmd{\bibliography}{\begingroup\zihao{5}}{}{}
-	\apptocmd{\bibliography}{\endgroup}{}{}
-	}%AtBeginDocument
- \renewcommand\@biblabel[1]{\zihao{5}[#1]}
-\renewenvironment{thebibliography}[1]
-{\chapter*{\bit@bib@name
-	 \@mkboth{\bit@bib@name}{}}%
-	 \list{\@biblabel{\@arabic\c@enumiv}}%
-{\settowidth\labelwidth{\@biblabel{#1}}%
- \leftmargin\labelwidth
-\advance\leftmargin\labelsep
- \setlength{\parsep}{1mm}
-\setlength{\labelsep}{0.5em}
- \setlength{\itemsep}{0.05pc}
- \setlength{\listparindent}{0in}
-\setlength{\itemindent}{0in}
-\setlength{\rightmargin}{0in}
-\@openbib@code
-\usecounter{enumiv}%
-\let\p@enumiv\@empty
-\renewcommand\theenumiv{\@arabic\c@enumiv}}%
- \sloppy
- \clubpenalty4000
- \@clubpenalty\clubpenalty
-\widowpenalty4000%
-\sfcode`\.\@m
- }{%
-\def\@noitemerr
- {\@latex@warning{Empty `thebibliography' environment}}%
-  \endlist \vskip.2in}
+%
+%\RequirePackage[numbers,square,comma,super,sort&compress]{natbib}
+%\bibpunct{\color{navyblue}[}{\color{navyblue}]}{,}{s}{}{,}
+%\pretocmd{\bibliography}{%
+%\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bit@bib@name}}{}{}
+%%==参考文献使用五号字，同时优化参考文献占用的空间
+%\AtBeginDocument{%
+%	\pretocmd{\bibliography}{\begingroup\zihao{5}}{}{}
+%	\apptocmd{\bibliography}{\endgroup}{}{}
+%	}%AtBeginDocument
+% \renewcommand\@biblabel[1]{\zihao{5}[#1]}
+%\renewenvironment{thebibliography}[1]
+%{\chapter*{\bit@bib@name
+%	 \@mkboth{\bit@bib@name}{}}%
+%	 \list{\@biblabel{\@arabic\c@enumiv}}%
+%{\settowidth\labelwidth{\@biblabel{#1}}%
+% \leftmargin\labelwidth
+%\advance\leftmargin\labelsep
+% \setlength{\parsep}{1mm}
+%\setlength{\labelsep}{0.5em}
+% \setlength{\itemsep}{0.05pc}
+% \setlength{\listparindent}{0in}
+%\setlength{\itemindent}{0in}
+%\setlength{\rightmargin}{0in}
+%\@openbib@code
+%\usecounter{enumiv}%
+%\let\p@enumiv\@empty
+%\renewcommand\theenumiv{\@arabic\c@enumiv}}%
+% \sloppy
+% \clubpenalty4000
+% \@clubpenalty\clubpenalty
+%\widowpenalty4000%
+%\sfcode`\.\@m
+% }{%
+%\def\@noitemerr
+% {\@latex@warning{Empty `thebibliography' environment}}%
+%  \endlist \vskip.2in}
+\RequirePackage[backend=biber, style=gb7714-2015,natbib]{biblatex} %% 参考文献相关
+\newcommand{\printbitbib}{%
+  \begingroup
+  \renewcommand*{\bibfont}{\zihao{5}}
+  \linespread{1.39}\selectfont
+  \printbibliography[heading=\bit@bib@name]
+  \endgroup
+}
 %%======================各种自定义标签=======================
 \def\bit@label@summary{结论}
 \def\bit@label@publications{攻读学位期间发表的论文与研究成果清单}
