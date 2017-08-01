@@ -8,7 +8,8 @@
 % 请在bitthesisextra.sty文件中定义其他会用到的宏包和自己的变量
 % 这样可以防止main.tex太过臃肿。
 \usepackage{bitthesisextra}
-
+% =====采用biblatex方式，需添加文献库===========
+\addbibresource{reference/test.bib}
 %%-----------以下是封面的填入栏目，按照格式填入即可================
 
 \zhtitle{BITthesis 研究生论文模板说明和一些使用技巧}
@@ -63,9 +64,9 @@
 %%==== 使用 BibTeX 编译========
 % 注意：至少需要引用一篇参考文献，否则下面两行会引起编译错误
 \nocite{*} %此处为测试，可以屏蔽掉
-\bibliographystyle{gbt-7714-2015-numerical}
-\bibliography{reference/test}
-
+%\bibliographystyle{gbt-7714-2015-numerical}
+%\bibliography{reference/test}
+\printbitbib
 %%============附录部分===========
 
 \begin{appendix}
