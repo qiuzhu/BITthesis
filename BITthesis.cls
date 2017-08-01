@@ -105,30 +105,6 @@
 \bit@define@term{classified}               % 中文分类号
 \bit@define@term{udc}                      % UDC编号
 \bit@define@term{secret}                   % 密级
-%%====================超链接与书签===========================
-\RequirePackage{hyperref}
-\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
-\definecolor{schrift}{RGB}{0,73,114}
-\definecolor{blueRef}{RGB}{12,127,172}
-\definecolor{navyblue}{RGB}{0,0,128}
-\hypersetup{
-	CJKbookmarks=true,
-	bookmarksopen=true,
-	bookmarksnumbered=true,
-	bookmarksopenlevel=1,
-	pdfborder= 0 0 0,
-	pdfstartview={XYZ null null 1.00},
-        pdfauthor = {\bit@zhauthor},
-        pdftitle = {\bit@zhtitle},
-	  unicode=true,
-	  linktoc=all,
-	  colorlinks=true,
-    citecolor=navyblue,
-    filecolor=cyan,
-    linkcolor=navyblue,
-    linkbordercolor=navyblue,
-    urlcolor=blue,
-}
 %%==============引用geometry 宏包设置纸张和页面========================
 %\RequirePackage[top=35mm,headheight=10mm,footskip=7mm,bottom=25mm,left=27mm,right=27mm,paper=a4paper]{geometry} %设置版面:上3.5cm，下2.5cm，左2.7cm，右2.7cm，页眉2.5cm，页脚1.8cm，装订线0cm
 \usepackage[%
@@ -565,6 +541,41 @@ footskip=0.7cm% 页脚 1.8cm %
     \setlength{\listparindent}{0cm} % 段落缩进量
     \setlength{\topsep}{0pt} % 标签与上文的间距
    }}{\end{list}}
+   %%====================超链接与书签===========================
+\RequirePackage{hyperxmp}
+\RequirePackage{hyperref}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\definecolor{schrift}{RGB}{0,73,114}
+\definecolor{blueRef}{RGB}{12,127,172}
+\definecolor{navyblue}{RGB}{0,0,128}
+\hypersetup{
+	CJKbookmarks=true,
+	bookmarksopen=true,
+	bookmarksnumbered=true,
+	bookmarksopenlevel=1,
+	pdfborder= 0 0 0,
+	unicode=true,
+	pdfstartview={XYZ null null 1.00},
+	linktoc=all,
+	colorlinks=true,
+	citecolor=navyblue,
+	filecolor=cyan,
+	linkcolor=navyblue,
+	linkbordercolor=navyblue,
+	urlcolor=blue,
+	pdfauthor = {汪卫},
+	pdftitle = {电动力绳系推进},
+	pdfcopyright={Copyright (C) 2017, 北京理工大学},
+	pdfsubject={航空宇航科学与技术},
+	pdfcontactaddress={北京市海淀区中关村南大街5号},
+	pdfcontactemail={wweibit@163.com},
+}
+\RequirePackage{bookmark} %可以设置书签颜色的宏包
+\bookmarkdefinestyle{TheStyleOfTheBookmark0}{color=navyblue} % Farbe Bookmark Chapter
+\bookmarkdefinestyle{TheStyleOfTheBookmark1}{color=black} % Farbe Bookmark Section
+\bookmarkdefinestyle{TheStyleOfTheBookmark2}{color=purple} % Farbe Bookmark Subsection
+\bookmarkdefinestyle{TheStyleOfTheBookmark3}{color=black} % Farbe Bookmark Subsubsection
+\bookmarksetup{open,addtohook=\bookmarksetup{style=TheStyleOfTheBookmark\bookmarkget{level}}}
 %%=========================载入其他常用宏包=========================================
 \RequirePackage{booktabs}
 \RequirePackage{longtable}
