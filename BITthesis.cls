@@ -488,8 +488,8 @@ footskip=0.7cm% 页脚 1.8cm %
 \newcommand{\printbitbib}{%
   \begingroup
   \renewcommand*{\bibfont}{\zihao{5}}
-  \linespread{1.39}\selectfont
-  \printbibliography[heading=\bit@bib@name]
+  \linespread{1.34}\selectfont
+  \printbibliography[heading=bibintoc,title=参考文献]
   \endgroup
 }
 %%======================各种自定义标签=======================
