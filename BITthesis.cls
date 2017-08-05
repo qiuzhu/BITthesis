@@ -75,8 +75,8 @@
 \newcommand{\zhspace}[1][1]{\hspace{#1\ccwd}}
 %%======================生成空的下划线，内部使用======================================
 \def\bit@underline[#1]#2{%
-	\CTEXunderline{\hbox to #1{\hfill#2\hfill}}}
-\def\bitunderline{\@ifnextchar[\bit@underline\CTEXunderline}
+	\CJKunderline{\hbox to #1{\hfill#2\hfill}}}
+\def\bitunderline{\@ifnextchar[\bit@underline\CJKunderline}
 %%=====================声明“作者姓名”等项目的命令======================================
 \def\bit@define@term#1{
   \expandafter\gdef\csname #1\endcsname##1{
