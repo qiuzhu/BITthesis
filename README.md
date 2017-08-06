@@ -5,8 +5,9 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 [![GitHub forks](https://img.shields.io/github/forks/qiuzhu/BITthesis.svg?style=flat-square)](https://github.com/qiuzhu/BITthesis/network)
 [![GitHub stars](https://img.shields.io/github/stars/qiuzhu/BITthesis.svg?style=flat-square)](https://github.com/qiuzhu/BITthesis/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg?style=flat-square)](https://raw.githubusercontent.com/qiuzhu/BITthesis/master/LICENSE)
-![logo](https://github.com/qiuzhu/BITthesis/blob/master/bitlatex.png)
 [![Build Status](https://travis-ci.org/qiuzhu/BITthesis.svg?branch=master)](https://travis-ci.org/qiuzhu/BITthesis)
+![logo](https://github.com/qiuzhu/BITthesis/blob/master/bitlatex.png)
+
 ------------------------------------------------------------------------
 # 编译方式和环境：
 在`Windows`下：
