@@ -1,5 +1,6 @@
 # BITthesis
 Thesis Template  of Beijing Institute of Technology  Using LaTeX
+# 北京理工大学LaTeX研究生论文使用说明
 
 北京理工大学LaTeX研究生论文模板
 [![GitHub forks](https://img.shields.io/github/forks/qiuzhu/BITthesis.svg?style=flat-square)](https://github.com/qiuzhu/BITthesis/network)
@@ -9,6 +10,10 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 ![logo](https://github.com/qiuzhu/BITthesis/blob/master/bitlatex.png)
 
 ------------------------------------------------------------------------
+# 硕博参数说明
+- 博士采用doctor选项
+- 硕士采用master选项
+- 由于学校是双面打印，剩下的参数默认即可
 # 编译方式和环境：
 在`Windows`下：
 - 强烈建议采用`Texlive 2016`、`2017`或`Miktex` 的发行版套装，利用自带工具，更新宏包到最新，强烈建议到[!清华大学镜像站](https://mirrors.tuna.tsinghua.edu.cn)下载套装，并且更新，这样速度最快；
@@ -68,11 +73,7 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 * 1.0来自于原作上海交通大学的template
 * 修复旧的模板中不支持的命令
 
-# 北京理工大学LaTeX研究生论文模板
 
-## 使用说明
-- 博士采用doctor选项
-- 硕士采用master选项
 ## 存在问题
 
 # TODO
