@@ -24,14 +24,17 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 
 - 如果安装的是texlive套装（建议2017），安装完成后，更新最新的方法：
 
-      1. 添加清华大学源：`tlmgr option repository https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet`或者
+      1. 添加清华大学源：`tlmgr option repository https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet`
+          
+          或者
          北理工源`tlmgr option repository http://mirror.bit.edu.cn/CTAN/systems/texlive/tlnet
+         
       2. 更新所有宏包的命令：`tlmgr update --self --all`
         
 - 最新远离`Ctex`套装，千万不要用，已经过时，不能编译通过！！！
 - `XeLatex`方式编译，否则不能通过！
 - 强烈推荐`Texstudio`这个编辑器，非常好用；
-- 参考文献建议用`jabref`或者`zotero`管理，生成自己的bib文献库，[!参考文章](http://www.360doc.com/content/14/0303/11/176942_357295803.shtml)
+- 参考文献建议用`jabref`或者`zotero`管理，生成自己的bib文献库，[参考文章](http://www.360doc.com/content/14/0303/11/176942_357295803.shtml)
 
 在`Linux`系统上：
 - 其他如同`Windows`
@@ -42,7 +45,7 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
   
          然后会提示微软的用户协议向导,单击“确定OK”继续
   
-          在安装字体后，我们需要使用命令来更新字体缓存：
+         在安装字体后，我们需要使用命令来更新字体缓存：
         2.sudo fc-cache -f -v
 
   -------------------------------------------------------------------
