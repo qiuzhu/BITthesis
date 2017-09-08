@@ -25,9 +25,8 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 - 如果安装的是texlive套装（建议2017），安装完成后，更新最新的方法：
 
       1. 添加清华大学源：`tlmgr option repository https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet`
-          
-          或者
-         北理工源`tlmgr option repository http://mirror.bit.edu.cn/CTAN/systems/texlive/tlnet
+          或
+         北理工源`tlmgr option repository http://mirror.bit.edu.cn/CTAN/systems/texlive/tlnet`
          
       2. 更新所有宏包的命令：`tlmgr update --self --all`
         
