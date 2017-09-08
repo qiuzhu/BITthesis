@@ -1,6 +1,9 @@
 # BITthesis
 Thesis Template  of Beijing Institute of Technology  Using LaTeX
+# QQ 交流群：北理LaTeX交流群
+# 群   号：537769255
 # 北京理工大学LaTeX研究生论文使用说明
+
 
 北京理工大学LaTeX研究生论文模板
 [![GitHub forks](https://img.shields.io/github/forks/qiuzhu/BITthesis.svg?style=flat-square)](https://github.com/qiuzhu/BITthesis/network)
