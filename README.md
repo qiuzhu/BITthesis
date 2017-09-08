@@ -20,12 +20,13 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 - 由于学校是双面打印，剩下的参数默认即可
 # 编译方式和环境：
 在`Windows`下：
-- 强烈建议采用`Texlive 2016`、`2017`或`Miktex` 的发行版套装，利用自带工具，更新宏包到最新，强烈建议到[!清华大学镜像站](https://mirrors.tuna.tsinghua.edu.cn)下载套装，并且更新，这样速度最快；
+- 强烈建议采用`Texlive 2016`、`2017`或`Miktex` 的发行版套装，利用自带工具，更新宏包到最新，强烈建议到[清华大学镜像站](https://mirrors.tuna.tsinghua.edu.cn)下载套装，并且更新，这样速度最快；
 
 - 如果安装的是texlive套装（建议2017），安装完成后，更新最新的方法：
 
-      - 1. 添加清华大学源：`tlmgr option repository https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet
-      - 2. 更新所有宏包的命令：`tlmgr update --self --all`
+      1. 添加清华大学源：`tlmgr option repository https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet`或者
+         北理工源`tlmgr option repository http://mirror.bit.edu.cn/CTAN/systems/texlive/tlnet
+      2. 更新所有宏包的命令：`tlmgr update --self --all`
         
 - 最新远离`Ctex`套装，千万不要用，已经过时，不能编译通过！！！
 - `XeLatex`方式编译，否则不能通过！
@@ -39,10 +40,10 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 
         1.sudo apt-get install ttf-mscorefonts-installer 
   
-        然后会提示微软的用户协议向导,单击“确定OK”继续
+         然后会提示微软的用户协议向导,单击“确定OK”继续
   
-       在安装字体后，我们需要使用命令来更新字体缓存：
-       2.sudo fc-cache -f -v
+          在安装字体后，我们需要使用命令来更新字体缓存：
+        2.sudo fc-cache -f -v
 
   -------------------------------------------------------------------
 # 简介
