@@ -14,5 +14,5 @@ before_script:
   - ls -lsa
   - echo $(pwd)
   - sudo chmod -R 777 .
-  script:
+script:
   - docker run -it -v packages:/miktex/.miktex -v $(pwd):/miktex/work nanmu42/tex-package-test-bench make main
