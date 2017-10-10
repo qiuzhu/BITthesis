@@ -1,7 +1,7 @@
 # BITthesis
 Thesis Template  of Beijing Institute of Technology  Using LaTeX
 # QQ 交流群：北理LaTeX交流群
-# 群   号：537769255
+# 群   号:170368921
 # 北京理工大学LaTeX研究生论文使用说明
 
 
@@ -10,7 +10,7 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 [![GitHub stars](https://img.shields.io/github/stars/qiuzhu/BITthesis.svg?style=flat-square)](https://github.com/qiuzhu/BITthesis/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg?style=flat-square)](https://raw.githubusercontent.com/qiuzhu/BITthesis/master/LICENSE)
 [![DOI](https://zenodo.org/badge/65891069.svg)](https://zenodo.org/badge/latestdoi/65891069)
-[![Build Status](https://travis-ci.org/qiuzhu/BITthesis.svg?branch=master)](https://travis-ci.org/qiuzhu/BITthesis)
+[![Build Status](https://travis-ci.org/qiuzhu/BITthesis.svg?branch=CI_test)
 ![logo](https://github.com/qiuzhu/BITthesis/blob/master/bitlatex.png)
 
 ------------------------------------------------------------------------
