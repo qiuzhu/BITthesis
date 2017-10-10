@@ -9,8 +9,8 @@ Thesis Template  of Beijing Institute of Technology  Using LaTeX
 [![GitHub forks](https://img.shields.io/github/forks/qiuzhu/BITthesis.svg?style=flat-square)](https://github.com/qiuzhu/BITthesis/network)
 [![GitHub stars](https://img.shields.io/github/stars/qiuzhu/BITthesis.svg?style=flat-square)](https://github.com/qiuzhu/BITthesis/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg?style=flat-square)](https://raw.githubusercontent.com/qiuzhu/BITthesis/master/LICENSE)
-![DOI](https://zenodo.org/badge/65891069.svg)](https://zenodo.org/badge/latestdoi/65891069)
-![Build Status](https://travis-ci.org/qiuzhu/BITthesis.svg?branch=CI_test)
+[![DOI](https://zenodo.org/badge/65891069.svg)](https://zenodo.org/badge/latestdoi/65891069)
+[![Build Status](https://travis-ci.org/qiuzhu/BITthesis.svg?branch=CI_test)](https://travis-ci.org/qiuzhu/BITthesis)
 ![logo](https://github.com/qiuzhu/BITthesis/blob/master/bitlatex.png)
 
 ------------------------------------------------------------------------
