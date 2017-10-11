@@ -1,0 +1,19 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker version
+  - docker info
+  - docker pull nanmu42/tex-package-test-bench
+  - docker image ls
+  - docker volume create --name packages
+
+before_script:
+  - ls -lsa
+  - echo $(pwd)
+  - sudo chmod -R 777 .
+  - docker run -it -v packages:/miktex/.miktex -v $(pwd):/miktex/work nanmu42/tex-package-test-bench xelatex main.tex
+script:
+  - docker run -it -v packages:/miktex/.miktex -v $(pwd):/miktex/work nanmu42/tex-package-test-bench xelatex main.tex

@@ -66,9 +66,9 @@
 %%============================设置西文字体，中文字体由ctex 自动设置=============================
 %%===========linux系统下需要下载和安装相应的宋体和ms字体=================
 %\setCJKmainfont{SimSun}
-\setmainfont{Times New Roman}
-\setsansfont{Arial}
-\setmonofont{Courier New}
+%\setmainfont{Times New Roman}
+%\setsansfont{Arial}
+%\setmonofont{Courier New}
 \providecommand{\cs}{\relax}
 \renewcommand{\cs}[1]{\textbackslash#1}
 %%=====================生成整数倍汉字宽度的空格，默认为1================================
